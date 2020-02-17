@@ -1,0 +1,334 @@
+/* CSS-file with custom styles - don't delete this comment */
+.myForm {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 0.8em;
+  width: 60em;
+  padding: 1em;
+}
+
+.myForm1 * {
+  box-sizing: border-box;
+}
+
+.myForm1 label {
+  padding: 0;
+  padding-left: 2em;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+}
+
+.myForm1 input,
+.myForm1 select,
+.myForm1 textarea {
+  margin-left: 2em;
+  margin-right: 2em;
+  float: right;
+  width: 50%;
+  border: .5px solid #ccc;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 0.9em;
+}
+
+.myForm1 textarea {
+  height: 100px;
+}
+
+.myForm1 button {
+  padding: 1em;
+  border-radius: 0.5em;
+  background: #eee;
+  border: none;
+  font-weight: bold;
+  margin-left: 14em;
+  margin-top: 1.8em;
+}
+
+.myForm1 button:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;border:none;}
+.tg td{font-family:Arial, sans-serif;font-size:12px;padding:10px 10px;border-style:hidden;border-width:0px;overflow:hidden;word-break:normal;  width: 100%; background-color: #F0F0F0;}
+.tg th{font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:10px 10px;border-style:hidden;border-width:0px;overflow:hidden;word-break:normal;  width: 100%; background-color: #F0F0F0;}
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg1 th{font-family:Arial, sans-serif;font-size:12px;font-weight:bold;padding:10px 10px;border-style:hidden;border-width:0px;overflow:hidden;word-break:normal; color:#FFFFFF; background-color: #4A484D;}
+#myImage {
+     max-width:40px;
+	 max-length:40px;
+}
+#cardsImage {
+     max-width:80px;
+	 max-length:80px;
+}
+#boxesImage {
+     max-width:150px;
+	 max-length:150px;
+}
+#sliddersText{
+  margin-right: 2em;
+  float: left;
+  width: 20em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 1.2em;
+  padding: 0.3em;	
+}
+#guarantee {
+	  
+  max-width:30px;
+	 max-length:30px;
+}
+
+#getStarted{
+    width:50%;
+    max-width:600px;
+	margin: auto;
+	padding: 10px;
+}
+#save{
+    width:75%;
+    max-width:600px;
+	margin: auto;
+	padding: 10px;
+}
+
+#steps{
+    width:40%;
+	margin: auto;
+	padding: 10px;
+	max-width:600px;
+}
+#contactsText{
+	margin-left: 2em;
+	margin-right: 2em;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 1.6em;
+	padding: 0.3em;	
+}
+#signUp{
+    width:80%;
+	margin: auto;
+	padding: 10px;
+	max-width:600px;	
+}
+#backgroundColor {
+	background-color: #F0F0F0;
+	background-position: center center;
+	background-size: cover;
+}
+#backgroundYellowColor {
+	background-color: #EDBA00;
+	background-position: center center;
+	background-size: cover;
+}
+#white{
+	color: #FFFFFF;
+}
+.darkColor {
+	background-color: #4A484D;
+	background-position: center center;
+	background-size: cover;
+	color: white;
+}
+#borderStyle {
+  border-style: solid;
+  border-width: 1px;
+  padding: 1em;	
+}
+#yellow{
+	color: #EDBA00;
+	 font-weight: bold;
+}
+#white{
+	color: #FFFFFF ;
+}
+#dottedLine {
+    border-bottom: 2px dotted #ccc;
+    line-height: 2em;
+    text-align: right;
+    clear: both;
+    margin: 0.5em 0 0 0;
+}
+span.definition {
+    float: left;
+}
+#spam {
+    display: inline-block;
+    border: 2px solid #fff;
+    padding: 0;
+    margin: 0 0 -2px 0;
+}
+#images{
+    width:50%;
+    max-width:85px;
+	margin: auto;
+	padding: 10px;
+}
+#biggerText {
+	text-align: justify;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 1.2em;
+	padding: 0.3em;	
+}
+#twoColorTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#myTd {
+  border: 1px solid #E4E2E3;
+  text-align: left;
+  padding: 8px;
+}
+#myTr:nth-child(even) {
+  background-color: #E4E2E3;
+}
+#myTrYellow {
+  background-color: #EDBA00;
+}
+#completeWidth {
+	 width: 100%;
+}
+#almostCompleteWidth {
+	 width: 90%;
+}
+#myLi {
+	 list-style-type: disc;
+    list-style-position: inside;
+    text-indent: -1.5em;
+    padding-left: 1em;
+}
+.myPadding {
+	 padding-left: 1em;
+	 padding-bottom: 2em;
+}
+.mine{
+	border-style: none;
+	text-align: center;
+	padding:0 5px 0 0;
+	table-layout: fixed;
+	width: 100%;
+}
+#blue{
+	color: #0000e7;
+	 font-weight: bold;
+	 text-align: right;
+}
+.bottomPadding{
+	padding-bottom: 2em;
+}
+.biggerBottomPadding {
+	padding-bottom: 5em;
+}
+#checkOut{
+    width:25%;
+	margin: auto;
+	padding: 10px;
+	max-width:300px;
+}
+.topPadding{
+	padding-top: 10em;
+}
+.centerAlign{
+	text-align:center;
+}
+.paddingLeft{
+	padding-left: 1em;
+}
+.paddingRight{
+	padding-right: 1em;
+}
+.clickHereText {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 1.5em;
+}
+.topBottomPadding {
+	padding-top: 1em;
+	padding-bottom: 1em;	
+}
+.biggerTopBottomPadding {
+	padding-top: 2em;
+	padding-bottom: 2em;	
+}
+.greyBackGround{
+	background-color: #F0F0F0;
+}
+.leftRightPadding {
+	padding-left: 5em;
+	padding-right: 5em;	
+}
+.topPadding7{
+	padding-top: 7em;
+}
+.leftPadding {
+	padding-left: 2em;
+}
+.rightPadding{
+	padding-right: 2em;
+}
+.topPadding {
+padding-top: 2em;	
+}
+.formPadding{
+	padding-left: 10em;
+	padding-right: 10em;	
+}
+.smallLeftPadding{
+	padding-left: 1em;
+}
+.bottomLeftPadding {
+	padding-left: 2em;
+	padding-bottom: 2em;	
+
+}
+.mybuttoms {
+    width:30%;
+    max-width:600px;
+	text-align: left;
+}
+.myAppButtoms {
+    width:30%;
+    max-width:600px;
+}
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+.whiteBackground {
+	background-color: #ffffff ;
+}
+.bottomPaddingPics{
+  padding-bottom: .5em;
+}
+.noMarginBottom {
+	margin-bottom: 0em;
+}
+.noRepeat {
+	background-repeat: no-repeat;
+  background-size: contain;
+}
+.noBottomPadding {
+	padding-bottom: 0px;
+}
+.logoImage {
+	max-width: 200px; 
+    max-height: 150px; 
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+  
+}
+.img2 {
+  float: left;
+}
+
