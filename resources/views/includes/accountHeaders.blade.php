@@ -24,7 +24,7 @@
 </div>
 <div>
     <div class="col-sm-9" id='blue'>
-        ID. RPM123456789
+        ID. RPM{{$accountId}}
     </div>
 </div>
 <div class="menu_main_wrap logo_left menu_show col-sm-12">

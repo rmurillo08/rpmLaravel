@@ -31,49 +31,12 @@
 					</div>
 				</div>
 			</section>
-                <section class="fullwidth_section no_padding_container map_section">
+                <section class="fullwidth_section no_padding_container ">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="sc_section">
-                                    <div id="sc_googlemap_2" class="sc_googlemap" data-zoom="3" data-style="simple">
-                                        <div id="sc_googlemap_2_1" class="sc_googlemap_marker" data-title="Madrid" data-description="
-                                        &lt;div class=&quot;sc_googlemap_desc&quot;&gt;&lt;img src=&quot;images/map/150x150.png&quot; alt=&quot;globallogistics_5&quot; class=&quot;alignnone sc_googlemap_img size-medium&quot;/&gt;
-                                        &lt;div class=&quot;sc_googlemap_textblock&quot; &gt;
-                                        &lt;h4 class=&quot;sc_googlemap_title&quot;&gt;Madrid&lt;/h4&gt;
-                                        &lt;p&gt;4100 W Sherman Dr.,&lt;br /&gt;
-                                        Paris, France&lt;br /&gt;
-                                        tel.: (677)-517-2386&lt;/p&gt;&lt;/div&gt;
-                                        &lt;/div&gt;
-                                        &lt;p&gt;" data-address="Madrid" data-latlng="" data-point="images/map/23x23.png"></div>
-                                        <div id="sc_googlemap_2_2" class="sc_googlemap_marker" data-title="Montague" data-description="
-                                        &lt;div class=&quot;sc_googlemap_desc&quot;&gt;&lt;img src=&quot;images/map/150x150.png&quot; alt=&quot;globallogistics_5&quot; class=&quot;alignnone sc_googlemap_img size-medium&quot;/&gt;
-                                        &lt;div class=&quot;sc_googlemap_textblock&quot; &gt;
-                                        &lt;h4 class=&quot;sc_googlemap_title&quot;&gt;Montague&lt;/h4&gt;
-                                        &lt;p&gt;4100 W Sherman Dr.,&lt;br /&gt;
-                                        Paris, France&lt;br /&gt;
-                                        tel.: (677)-517-2386&lt;/p&gt;&lt;/div&gt;
-                                        &lt;/div&gt;
-                                        &lt;p&gt;" data-address="Montague" data-latlng="" data-point="images/map/23x23.png"></div>
-                                        <div id="sc_googlemap_2_3" class="sc_googlemap_marker" data-title="Wien" data-description="
-                                        &lt;div class=&quot;sc_googlemap_desc&quot;&gt;&lt;img src=&quot;images/map/150x150.png&quot; alt=&quot;globallogistics_5&quot; class=&quot;alignnone sc_googlemap_img size-medium&quot;/&gt;
-                                        &lt;div class=&quot;sc_googlemap_textblock&quot; &gt;
-                                        &lt;h4 class=&quot;sc_googlemap_title&quot;&gt;Wien&lt;/h4&gt;
-                                        &lt;p&gt;4100 W Sherman Dr.,&lt;br /&gt;
-                                        Paris, France&lt;br /&gt;
-                                        tel.: (677)-517-2386&lt;/p&gt;&lt;/div&gt;
-                                        &lt;/div&gt;
-                                        &lt;p&gt;" data-address="Wien" data-latlng="" data-point="images/map/23x23.png"></div>
-                                        <div id="sc_googlemap_2_4" class="sc_googlemap_marker" data-title="Adana" data-description="
-                                        &lt;div class=&quot;sc_googlemap_desc&quot;&gt;&lt;img src=&quot;images/map/150x150.png&quot; alt=&quot;globallogistics_5&quot; class=&quot;alignnone sc_googlemap_img size-medium&quot;/&gt;
-                                        &lt;div class=&quot;sc_googlemap_textblock&quot; &gt;
-                                        &lt;h4 class=&quot;sc_googlemap_title&quot;&gt;Adana&lt;/h4&gt;
-                                        &lt;p&gt;4100 W Sherman Dr.,&lt;br /&gt;
-                                        Paris, France&lt;br /&gt;
-                                        tel.: (677)-517-2386&lt;/p&gt;&lt;/div&gt;
-                                        &lt;/div&gt;
-                                        &lt;p&gt;" data-address="Adana" data-latlng="" data-point="images/map/23x23.png"></div>
-                                    </div>
+                                    <div id="map"></div>
                                 </div>
                             </div>
                         </div>
@@ -154,12 +117,24 @@
 <div class="preloader">
     <div class="preloader_image"></div>
 </div>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{env('API_KEY')}}&callback=initMap"
+            async defer>
+    </script>
     <script type="text/javascript" src="js/vendor/jquery.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
 
     <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false'></script>
-    <script type='text/javascript' src='js/core.googlemap.js'></script>
+{{--    <script type='text/javascript' src='js/core.googlemap.js'></script>--}}
 
     <!--<script type="text/javascript" src="custom_tools/js/front.customizer.js"></script>
     <script type="text/javascript" src="custom_tools/js/skin.customizer.js"></script>-->

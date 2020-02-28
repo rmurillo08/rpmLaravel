@@ -49,7 +49,7 @@ class LoginController extends Controller
         ];
         if(Auth::attempt($userData)) {
 
-            return view('account');
+            return redirect()->action('AccountController@get');
         }
         return back()->with('error', 'Wrong Login Details');
     }

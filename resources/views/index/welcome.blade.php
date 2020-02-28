@@ -591,11 +591,12 @@
                             <div class="sc_section">
                                 <div class="sc_content container">
                                     <div class="sc_line sc_line_style_solid"></div>
-                                    <div class="sc_emailer alignleft sc_emailer_opened">
-                                        <form class="sc_emailer_form">
+                                    <div class=" aligncenter sc_emailer_opened">
+                                        <form action="{{URL:: to('newsletter')}}" method="post" name="newsletter" class="sc_emailer_form">
+                                            {{csrf_field()}}
                                             <span class="title">Newsletter</span>
-                                            <input type="text" class="sc_emailer_input" name="email" value="" placeholder="Enter your Email here">
-                                            <a href="index" class="sc_emailer_button" title="Submit" data-group="E-mailer subscription">Subscribe</a>
+                                            <input type="email" id="email"  name="email" value="" placeholder="Enter your Email here">
+                                            <input type="submit" class="submit_button sc_button sc_button_square sc_button_style_filled sc_button_bg_link sc_button_size_medium" value="Subscribe">
                                         </form>
                                     </div>
                                 </div>

@@ -1,7 +1,3 @@
-{{--@php--}}
-{{--$currentItem = (new CurrentItem())->getCurrentItem('');--}}
-{{--echo 'this is the current item::: ' . $currentItem;--}}
-{{--@endphp--}}
 <div class="menu_user_wrap">
     <div class="container">
         <div class="menu_user_area menu_user_right menu_user_nav_area">
@@ -26,7 +22,6 @@
                                     <div>
                                         <form action="{{URL:: to('log')}}" method="post" name="login_form" class="popup_form login_form">
                                             {{csrf_field()}}
-    {{--                                        <input type="hidden" name="redirect_to" value="#">--}}
                                             <div class="icon popup_form_field login_field iconed_field icon-mail">
                                                 <input type="text" id="log" name="log" value="" placeholder="Email">
                                             </div>
@@ -44,8 +39,8 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>  <!-- /.sc_tabs -->
-                        </div>      <!-- /.user-popUp -->
+                            </div>
+                        </div>
                     </li>
                     <li>
                         <a href="signUp">
@@ -54,6 +49,9 @@
                     </li>
                 @endguest
                 @auth
+                    <li class="menu-item">
+                        <a href="account">My Account</a>
+                    </li>
                     <li class="menu-item">
                         <a href="logOut">Log Out</a>
                     </li>

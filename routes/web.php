@@ -74,12 +74,11 @@ Route::get('privacy', function () {
     return view('privacy');
 });
 Route::post('register', 'Auth\RegisterController@create');
+Route::post('newsletter', 'NewsletterController@insert');
 Route::get('registerConfirmation', function () {
     return view('registerConfirmation');
 });
-Route::get('account', function () {
-    return view('account');
-})->middleware('auth');
+Route::get('account', 'AccountController@get')->middleware('auth');
 Route::get('prealert', function () {
     return view('prealert');
 })->middleware('auth');
@@ -90,12 +89,12 @@ Route::get('invoice', function () {
     $invoices = [['billId'=>0, 'invoiceNumber'=>0, 'shipper'=>0, 'billId'=>0, 'invoiceNumber'=>0, 'shipper'=>0],[] ];
     return view('invoice', $invoices);
 });//->middleware('auth');
-Route::get('checkout', function () {
+Route::get('checkOut', function () {
     return view('checkout');
 })->middleware('auth');
-Route::get('checkout1', function () {
-    return view('checkout1');
-})->middleware('auth');
-Route::get('checkout2', function () {
+Route::get('checkOut2', function () {
     return view('checkout2');
+})->middleware('auth');
+Route::get('checkOut3', function () {
+    return view('checkout3');
 })->middleware('auth');

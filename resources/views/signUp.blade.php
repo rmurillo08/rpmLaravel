@@ -389,7 +389,7 @@
 										<label class="custom-control-label bottomPadding" for="acceptTerms"> I accept the <a href="terms">terms and conditions</a>  of the Memebership
 											Agreement to RPM Express Couriers.
 										</label>
-									</div>
+                                      </div>
 									 <input disabled id="registerButtom" type="image" name="submit" src="images/icon/register.jpg" >
 								</div>
 							</form>
