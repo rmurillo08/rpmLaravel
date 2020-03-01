@@ -85,10 +85,7 @@ Route::get('prealert', function () {
 Route::get('packages', function () {
     return view('packages');
 })->middleware('auth');
-Route::get('invoice', function () {
-    $invoices = [['billId'=>0, 'invoiceNumber'=>0, 'shipper'=>0, 'billId'=>0, 'invoiceNumber'=>0, 'shipper'=>0],[] ];
-    return view('invoice', $invoices);
-});//->middleware('auth');
+Route::get('invoice', 'Invoices\InvoiceController@create')->middleware('auth');
 Route::get('checkOut', function () {
     return view('checkout');
 })->middleware('auth');

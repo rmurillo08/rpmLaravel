@@ -17,6 +17,9 @@
                         FAQ'S
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="logOut">Log Out</a>
+                </li>
             </ul>
         </div>
         <div class="menu_user_area menu_user_left menu_user_contact_area">Call Us Now: </div>
