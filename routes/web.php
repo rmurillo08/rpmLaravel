@@ -85,7 +85,7 @@ Route::get('prealert', function () {
 Route::get('packages', function () {
     return view('packages');
 })->middleware('auth');
-Route::get('invoice', 'Invoices\InvoiceController@create')->middleware('auth');
+Route::get('invoice', 'Invoices\InvoiceController@get')->middleware('auth');
 Route::get('checkOut', function () {
     return view('checkout');
 })->middleware('auth');
