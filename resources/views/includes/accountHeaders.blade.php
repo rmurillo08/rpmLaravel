@@ -8,7 +8,7 @@
                 <li class="login_wrap">
                     <a href="account">
                         <span class="icon-profile"></span>
-                        Username
+                        My Account
                     </a>
                 </li>
                 <li class="login_wrap">

@@ -33,7 +33,7 @@
 								confirm.setCustomValidity(confirm.value !== email.value ? "Emails do not match." : "");'
 							> {{csrf_field()}}
 								<p>Select Package Destination:
-									<select  required id="country" name="delivery_country">
+									<select  required id="deliveryCountry" name="delivery_country">
 										<option disabled selected value value="delivery_country" selected="selected">Choose country of destination</option>
 										<option value="Acono">Acono</option>
 										<option value="Aranguez">Aranguez</option>
@@ -300,11 +300,11 @@
 									Password must be a minimum of eight (8) characters in length<br>
 									Contain at least one (1) Uppercase letter and one (1) number</p>
 									  <p>
-										  <select id="completeWidth" name="id_type" requiered>
+										  <select id="completeWidth" name="id_type" required>
 											<option disabled selected value value="id_type" selected="selected">Select ID Type</option>
-											 <option value="nationalId">National ID</option>
-											 <option value="dl">Driver's License </option>
-											 <option value="passportId">Passport ID</option>
+											 <option value="National Id">National ID</option>
+											 <option value="Driver License">Driver's License </option>
+											 <option value="Passport Id">Passport ID</option>
 										  </select>
 									  </p>
 										  <input id='completeWidth' type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="primary_telephone"  placeholder='Primary Phone Number Exe: XXX-XXX-XXXX' required>
@@ -312,7 +312,7 @@
 									  <p>Delivery Preferences</p>
 									  <div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="pickup" name="pick_up">
-										<label class="custom-control-label" for="pickup"> I will pick up my packages at the _______ Location</label>
+										<label class="custom-control-label" for="pickup"> I will pick up my packages at the this.country Location</label>
 									</div>
 									  <div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="delivery" name="delivery">
@@ -391,6 +391,15 @@
 										</label>
                                       </div>
 									 <input disabled id="registerButtom" type="image" name="submit" src="images/icon/register.jpg" >
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
 								</div>
 							</form>
 						</div>

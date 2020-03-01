@@ -30,116 +30,153 @@
                                 <h3 class="post_title" id='yellow'>
                                     MY ACCOUNT
                                 </h3>
-                                <form class="myForm1" method="" action="" id='backgroundColor'>
+                                <form class="myForm1" method="post" action="{{URL:: to('account/updated')}}" id='backgroundColor'>
+                                    {{csrf_field()}}
                                     <p class='leftPadding topPadding'>Main Contact Information</p>
                                     <p>
                                         <label id='label1'>Name
-                                            <input type="text" name="name" placeholder={{ $name }} required>
+                                            <input type="text" name="name" value={{ $name }} readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Email Address
-                                            <input type="text" name="cardNumber" placeholder='{{$email}}' required>
+                                            <input type="text" name="email" placeholder='{{$email}}' readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Identification Type
                                             <input type="text" name="identificationType"
-                                                   placeholder={{$idType}} required>
+                                                   placeholder={{$idType}} readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Identification Number
                                             <input type="text" name="identificationNumber"
-                                                   placeholder={{$idNumber}} required>
+                                                   placeholder={{$idNumber}} readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Primary Contact Number
                                             <input type="text" name="securityCode"
-                                                   placeholder={{$primaryTelephone}} required>
+                                                   placeholder={{$primaryTelephone}} readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Secondary Contact Number
                                             <input type="text" name="securityCode"
-                                                   placeholder={{$secondaryTelephone}} required>
+                                                   placeholder={{$secondaryTelephone}} readonly>
                                         </label>
                                     </p>
                                     <p class='leftPadding'>Delivery information</p>
                                     <p>
                                         <label id='label1'>Address 1
-                                            <input type="text" name="address1" placeholder={{$primaryAddress}} required>
+                                            <input type="text" name="primary_address" value={{$primaryAddress}} required>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Address 2
-                                            <input type="text" name="address2"
-                                                   placeholder={{$secondaryAddress}} required>
+                                            <input type="text" name="secondary_address"
+                                                   value={{$secondaryAddress}}>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>City
-                                            <input type="text" name="city" placeholder={{$city}} required>
+                                            <input type="text" name="city" value={{$city}} required>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Country
-                                            <input type="text" name="country" placeholder={{$country}} required>
+                                            <input type="text" name="country" value={{$country}} required>
                                         </label>
                                     </p>
                                     <p class='bottomLeftPadding mybuttoms'>
-                                        <a href=''>
+                                        <a href='#' data-toggle="modal" data-target="#basicModal">
                                             <img src="images/account/ea.png">
                                         </a>
                                     <p/>
-                                </form>
-                                <form>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="delivery" value={{$delivery}}/>
-                                        <label class="custom-control-label bottomPadding">I have opt in to have all of
-                                            my packages deliver to the address listed above</label>
-                                        <input type="checkbox" name="pickup" value={{$pickup}}/>
-                                        <label class="custom-control-label bottomPadding">I will pick up all my packages
-                                            at the RPM main office in </label>
-                                    </div>
-                                </form>
-                                <p>Other Account Settings</p>
-                                <div class="sc_accordion sc_accordion_style_1" data-active="0" role="tablist">
-                                    <div class="sc_accordion_item sc_active">
-                                        <h5 class="sc_accordion_title" role="tab" id="ui-id-1" aria-controls="ui-id-2">
-                                            <span
-                                                class="sc_accordion_icon sc_accordion_icon_closed icon-down-open"></span>
-                                            <span
-                                                class="sc_accordion_icon sc_accordion_icon_opened icon-down-open"></span>
-                                            Autorized Users
-                                        </h5>
-                                        <div class="sc_accordion_content" id="ui-id-2" aria-labelledby="ui-id-1"
-                                             role="tabpanel">
-                                            <div>
-                                                <table class='mine'>
-                                                    <tr>
-                                                        <th class='mine'>Authorized User</th>
-                                                        <th class='mine'>Contact Number</th>
-                                                        <th class='mine'>Customer ID</th>
-                                                    </tr>
-                                                    @foreach($authUsers AS $user)
-                                                        <tr>
-                                                            <td class='mine'>{{$user['name']}}</td>
-                                                            <td class='mine'>$userNumber</td>
-                                                            <td class='mine'>{{$user['authId']}}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                </table>
+                                    <!-- basic modal -->
+                                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Update Information</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Any changes to the delivery address will be reflect on your accounts 48 hours after the update has been made. </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-default " name="submit">Save changes</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p class='bottomLeftPadding biggerTopBottomPadding mybuttoms'>
-                                    <a href=''>
-                                        <img src="images/account/eau.png">
-                                    </a>
-                                <p/>
+                                </form>
+                                <form>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="delivery" value='delivery' {{$delivery === 1 ? 'checked' : ''}}/>
+                                        <label class="custom-control-label bottomPadding">I have opt in to have all of
+                                            my packages deliver to the address listed above.</label>
+                                        <input type="checkbox" name="pickup" value='pickup' {{$pickup === 1 ? 'checked' : ''}}/>
+                                        <label class="custom-control-label bottomPadding">I will pick up all my packages
+                                            at the RPM main office. </label>
+                                    </div>
+                                </form>
+                                <p>Other Account Settings</p>
+                                <form  id='updateAuthUsers' method="post" action="{{URL:: to('authUser/updated')}}">
+                                    <div class="sc_accordion sc_accordion_style_1" data-active="0" role="tablist">
+                                        <div class="sc_accordion_item sc_active">
+                                            <h5 class="sc_accordion_title" role="tab" id="ui-id-1" aria-controls="ui-id-2">
+                                            <span
+                                                class="sc_accordion_icon sc_accordion_icon_closed icon-down-open"></span>
+                                                <span
+                                                    class="sc_accordion_icon sc_accordion_icon_opened icon-down-open"></span>
+                                                Autorized Users
+                                            </h5>
+                                            <div class="sc_accordion_content" id="ui-id-2" aria-labelledby="ui-id-1"
+                                                 role="tabpanel">
+                                                <div>
+                                                    <table class='mine'>
+                                                        <tr>
+                                                            <th class='mine'>Authorized User</th>
+                                                            <th class='mine'>Contact Number</th>
+                                                            <th class='mine'>Customer ID</th>
+                                                        </tr>
+                                                        @foreach($authUsers AS $user)
+                                                            <tr>
+                                                                <td class='mine'>{{$user['name']}}</td>
+                                                                <td class='mine'>{{$user['telephone']}}</td>
+                                                                <td class='mine'>{{$user['authId']}}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class='bottomLeftPadding biggerTopBottomPadding mybuttoms'>
+                                        <a href='#' data-toggle="modal" data-target="#basicModal">
+                                            <img src="images/account/eau.png">
+                                        </a>
+                                    <p/>
+                                    <!-- basic modal -->
+                                    <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">Update Information</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Any changes to the delivery address will be reflect on your accounts 48 hours after the update has been made. </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-default " name="submit">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </article>
                     </div>

@@ -51,7 +51,7 @@ class AccountController extends Controller
    private function getAuthQuery($userId)
    {
        return  \DB::table('autorized_users')
-           ->select('id','first_name', 'last_name')
+           ->select('id','first_name', 'last_name', 'telephone')
            ->where('user_id', '=', $userId)
            ->get();
    }
@@ -62,6 +62,7 @@ class AccountController extends Controller
            $authUsersData[] = [
                'authId' => $user->id,
                'name' => ucwords($user->first_name) . ' ' . ucwords($user->last_name),
+               'telephone' => $user->telephone ?? 'NA'
            ];
        }
        return $authUsersData ?? [];
