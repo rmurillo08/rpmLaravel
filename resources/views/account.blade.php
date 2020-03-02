@@ -102,7 +102,7 @@
                                                     <h4 class="modal-title" id="myModalLabel">Update Information</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Any changes to the delivery address will be reflect on your accounts 48 hours after the update has been made. </p>
+                                                    <p>Any changes to the delivery address will be reflected on your account 48 hours after the update has been made. </p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -167,7 +167,7 @@
                                                     <h4 class="modal-title" id="myModalLabel">Update Information</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Any changes to the delivery address will be reflect on your accounts 48 hours after the update has been made. </p>
+                                                    <p>Any changes to the authorized users will be reflected on your account 48 hours after the update has been made. </p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
