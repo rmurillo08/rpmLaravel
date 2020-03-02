@@ -12,69 +12,7 @@
         <div class="page_wrap">
             <div class="top_panel_fixed_wrap"></div>
             <header class="top_panel_wrap">
-                <div class="menu_user_wrap">
-                    <div class="container">
-                        <div class="menu_user_area menu_user_right menu_user_nav_area">
-                            <ul id="menu_user" class="menu_user_nav">
-                                <li class="menu-item">
-                                    <a href="contacts">Contact Us</a>
-                                </li>
-                                <li class="login_wrap">
-                                    <a href="account.html">
-                                        <span class="icon-profile"></span>
-                                        Username
-                                    </a>
-                                </li>
-								 <li class="login_wrap">
-                                    <a href="faqs">
-                                        <span class="icon-profile"></span>
-                                        FAQ'S
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="menu_user_area menu_user_left menu_user_contact_area">Call Us Now: 858.536.4161</div>
-                    </div>
-                </div>
-				<div>
-					<div class="col-sm-9" id='blue'>
-						ID. RPM123456789
-					</div>
-				</div>
-                <div class="menu_main_wrap logo_left menu_show">
-                    <div class="container">
-                        <div class="logo">
-                            <a href="index.html">
-                                <img src="images/icon/157x54.png" alt="">
-                                <span class="logo_info"></span>
-                            </a>
-                        </div>
-                        <div class="menu_main">
-                            <nav class="menu_main_nav_area">
-                                <ul id="menu_main" class="menu_main_nav">
-                                    <li class="menu-item">
-                                        <a href="index.html" class="sf-with-ul">Home</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="account.html">MY Account</a>
-                                    </li>
-									<li class="menu-item">
-                                        <a href="packages" class="sf-with-ul">My Packages</a>
-                                    </li>
-									<li class="menu-item">
-                                        <a href="invoice" class="resources">Invoices</a>
-                                    </li>
-                                   <li class="menu-item current-menu-item">
-                                        <a href="prealert">Prealert</a>
-                                    </li>
-									 <li class="menu-item">
-                                        <a href="checkOut">Check Out</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+                @include('includes.accountHeaders')
             </header>
 			<section>
 				<div class="container">

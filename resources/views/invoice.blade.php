@@ -19,53 +19,53 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<h4 id='yellow'><b>Unpaid Invoices</b></h4>
-                            @forelse($invoices AS $invoice)
-                                <table class='tg1 mine'>
-                                    <thead>
-                                    <tr class='mine'>
-                                        <th class="mine">Select</th>
-                                        <th class='mine'>Airway <br> Bill #</th>
-                                        <th class='mine'>Invoice Number</th>
-                                        <th class='mine'>Shipper</th>
-                                        <th class='mine'>Shipper’s Tracking Number</th>
-                                        <th class='mine'>Description </th>
-                                        <th class='mine'>Weight(LBS)</th>
-                                        <th class='mine'>Value(US$)</th>
-                                        <th class='mine'>Status</th>
-                                        <th class='mine'>Invoice Amount(TT$)</th>
-                                    </tr>
-                                    </thead>
+                            @foreach($pendings AS $invoice)
+                                    <table class='tg1 mine'>
+                                        <thead>
+                                        <tr class='mine'>
+                                            <th class="mine">Select</th>
+                                            <th class='mine'>Airway <br> Bill #</th>
+                                            <th class='mine'>Invoice Number</th>
+                                            <th class='mine'>Shipper</th>
+                                            <th class='mine'>Shipper’s Tracking Number</th>
+                                            <th class='mine'>Description </th>
+                                            <th class='mine'>Weight(LBS)</th>
+                                            <th class='mine'>Value(US$)</th>
+                                            <th class='mine'>Status</th>
+                                            <th class='mine'>Invoice Amount(TT$)</th>
+                                        </tr>
+                                        </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    <!-- Default unchecked -->
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id={{$invoice['id']}} checked>
-                                                        <label class="custom-control-label" for="{{$invoice['id']}}"></label>
-                                                    </div>
-                                                </th>
-                                                <td>{{$invoice['billId']}}</td>
-                                                <td>{{$invoice['invoiceNumber']}}</td>
-                                                <td>{{$invoice['shipper']}}</td>
-                                                <td>{{$invoice['trackingNumber']}}</td>
-                                                <td>{{$invoice['description']}}</td>
-                                                <td>{{$invoice['weight']}}</td>
-                                                <td>{{$invoice['value']}}</td>
-                                                <td>{{$invoice['status']}}</td>
-                                                <td>{{$invoice['amount']}}</td>
-                                            </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <!-- Default unchecked -->
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id={{$invoice['id']}} >
+                                                    <label class="custom-control-label" for="{{$invoice['id']}}"></label>
+                                                </div>
+                                            </th>
+                                            <td>{{$invoice['billId']}}</td>
+                                            <td>{{$invoice['invoiceNumber']}}</td>
+                                            <td>{{$invoice['shipper']}}</td>
+                                            <td>{{$invoice['trackingNumber']}}</td>
+                                            <td>{{$invoice['description']}}</td>
+                                            <td>{{$invoice['weight']}}</td>
+                                            <td>{{$invoice['value']}}</td>
+                                            <td>{{$invoice['status']}}</td>
+                                            <td>{{$invoice['amount']}}</td>
+                                        </tr>
                                         </tbody>
                                         <p>Click on the airway bill number to view breakdown of the individual charges and details</p>
-                                        @empty
-                                        <p> No pending invoices</p>
-                                </table>
-                            @endforelse
+                                    </table>
+                            @endforeach
+                            @if(empty($pendings))
+                                No Pending Invoices
+                            @endif
                             <h4 id='yellow'><b>INVOICE HISTORY</b></h4>
-                            @forelse($invoices AS $invoice)
+                            @foreach($invoices AS $invoice)
                                 <table class='tg1 mine'>
                                     <thead>
                                     <tr>
-                                        {{--                                        <th class='mine'>Select</th>--}}
                                         <th class='mine'>Airway <br> Bill #</th>
                                         <th class='mine'>Invoice Number</th>
                                         <th class='mine'>Shipper</th>
@@ -91,9 +91,10 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                @empty
+                            @endforeach
+                            @if(empty($invoices))
                                 <p> No invoices</p>
-                            @endforelse
+                            @endif
 						</div>
 					</div>
 				</div>

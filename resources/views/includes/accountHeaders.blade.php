@@ -41,22 +41,22 @@
         <div class="menu_main">
             <nav class="menu_main_nav_area">
                 <ul id="menu_main" class="menu_main_nav">
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'home' ? 'current-menu-item' : '' }}">
                         <a href="home" class="sf-with-ul">Home</a>
                     </li>
-                    <li class="menu-item  current-menu-item">
+                    <li class="menu-item  {{request()->segment(count(request()->segments())) === 'account' ? 'current-menu-item' : '' }}">
                         <a href="account">MY Account</a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'packages' ? 'current-menu-item' : '' }}">
                         <a href="packages" class="sf-with-ul">My Packages</a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'invoice' ? 'current-menu-item' : '' }}">
                         <a href="invoice" class="resources">Invoices</a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'prealert' ? 'current-menu-item' : '' }}">
                         <a href="prealert">Prealert</a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'checkOut' ? 'current-menu-item' : '' }}">
                         <a href="checkOut">Check Out</a>
                     </li>
                 </ul>

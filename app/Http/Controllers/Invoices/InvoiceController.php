@@ -11,6 +11,7 @@ class InvoiceController extends Controller
        $user = auth()->user();
        $allInvoices = $this->getInvoicesQuery($user->id);
        $invoices['invoices'] = $this->formatAccount($allInvoices);
+       $invoices['pendings'] = $this->getPendingInvoices($invoices['invoices']);
        $invoices['accountId'] = $user->id;
        return  view('invoice')->with($invoices);
    }
@@ -31,18 +32,28 @@ class InvoiceController extends Controller
 
            $invoicesArray[] = [
                'id' => $invoice->InvoiceId,
-               'billId' => $invoice->AirBillNumber,
+               'billId' => $invoice->AirwayBillNumber,
                'invoiceNumber' => $invoice->InvoiceNumber ?? 'NA',
                'shipper' => $invoice->Shipper ?? 'NA',
                'trackingNumber' => $invoice->TrackingNumber ?? 'NA',
                'description' => $invoice->Description ?? 'NA',
                'weight' => $invoice->Weight ?? 'NA',
                'value' => $invoice->Value ?? 'NA',
-               'status' => $invoice->IsPaid ?? 'NA',
+               'status' => (int)$invoice->IsPaid === 1  ? 'Paid' : 'Pending',
                'amount' => $invoice->TotalCharges ?? 'NA',
            ];
        }
        return $invoicesArray ?? [];
    }
+
+   private function getPendingInvoices($invoices): array
+   {
+        foreach ($invoices as $invoice) {
+            if($invoice['status'] === 'Pending') {
+                $pending[] = $invoice;
+            }
+        }
+        return $pending ?? [];
+    }
 }
 

@@ -94,47 +94,47 @@
         <div class="menu_main">
             <nav class="menu_main_nav_area">
                 <ul id="menu_main" class="menu_main_nav">
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'home' ? 'current-menu-item' : '' }}">
                         <a href="home" class="sf-with-ul">Home</a>
                     </li>
-                    <li class="menu-item menu-item-has-children">
+                    <li class="menu-item menu-item-has-children {{in_array(request()->segment(count(request()->segments())), ['ourServices', 'air', 'delivery', 'ocean', 'shopper']) ? 'current-menu-item' : '' }}">
                         <a href="ourServices">Our services</a>
                         <ul class="sub-menu">
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'air' ? 'current-menu-item' : '' }}">
                                 <a href="air">AIR FREIGHT</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'ocean' ? 'current-menu-item' : '' }}">
                                 <a href="ocean">OCEAN FREIGHT</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'shopper' ? 'current-menu-item' : '' }}">
                                 <a href="shopper">SHOPPER ASSISTANCE</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'delivery' ? 'current-menu-item' : '' }}">
                                 <a href="delivery">DELIVERY NATIONWIDE</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item menu-item-has-children">
+                    <li class="menu-item">
                         <a href="home#sc_tab_1" class="sc_tabs_titles">Features</a>
                     </li>
-                    <li class="menu-item menu-item-has-children">
+                    <li class="menu-item menu-item-has-children {{in_array(request()->segment(count(request()->segments())), ['customs', 'restricted', 'insurance']) ? 'current-menu-item' : '' }}">
                         <a class="sf-with-ul">RESOURCES</a>
                         <ul class="sub-menu">
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'customs' ? 'current-menu-item' : '' }}">
                                 <a href="customs">Customs</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'restricted' ? 'current-menu-item' : '' }}">
                                 <a href="restricted">Restricted Items</a>
                             </li>
-                            <li class="menu-item">
+                            <li class="menu-item {{request()->segment(count(request()->segments())) === 'insurance' ? 'current-menu-item' : '' }}">
                                 <a href="insurance">Insurance & Care</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'rates' ? 'current-menu-item' : '' }}">
                         <a href="rates">Rates</a>
                     </li>
-                    <li class="menu-item">
+                    <li class="menu-item {{request()->segment(count(request()->segments())) === 'faqs' ? 'current-menu-item' : '' }}">
                         <a href="faqs">FAQ’S</a>
                     </li>
 {{--                    <li class="menu-item menu-item-has-children">--}}
