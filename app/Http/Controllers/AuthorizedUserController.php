@@ -11,7 +11,7 @@ class AuthorizedUserController
         for($i = 1; $i < 6; $i++) {
             $key = 'authorized'.$i.'FirstName';
             $lastName = 'authorized'.$i.'LastName';
-            if(isset($request[$key])) {
+            if(isset($request[$key]) && !empty($request[$key])) {
                 $users[] = [
                     'firstName' => $request[$key],
                     'lastName' => $request[$lastName],

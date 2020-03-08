@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Geocoder\Location;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthorizedUserController;
 use App\Providers\RouteServiceProvider;
@@ -70,6 +71,8 @@ class RegisterController extends Controller
 
     private function insertQuery($request)
     {
+        $coordinates = (new Location())->getCoordinates($request); info('coordinates:: ', [$coordinates]);
+
         $user = (new User());
         $user->first_name =  $request['first_name'];
         $user->last_name =  $request['last_name'];
