@@ -32,6 +32,15 @@
 								oninput='repeatPassword.setCustomValidity(repeatPassword.value !== password.value ? "Passwords do not match." : "");
 								confirm.setCustomValidity(confirm.value !== email.value ? "Emails do not match." : "");'
 							> {{csrf_field()}}
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 								<p>Select Package Destination:
 									<select  required id="deliveryCountry" name="delivery_country">
 										<option disabled selected value value="delivery_country" selected="selected">Choose country of destination</option>
@@ -312,7 +321,7 @@
 									  <p>Delivery Preferences</p>
 									  <div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="pickup" name="pick_up">
-										<label class="custom-control-label" for="pickup"> I will pick up my packages at the this.country Location</label>
+										<label class="custom-control-label" for="pickup"> I will pick up my packages at this country Location</label>
 									</div>
 									  <div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="delivery" name="delivery">
@@ -391,15 +400,6 @@
 										</label>
                                       </div>
 									 <input disabled id="registerButtom" type="image" name="submit" src="images/icon/register.jpg" >
-                                    @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
 								</div>
 							</form>
 						</div>

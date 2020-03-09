@@ -11,6 +11,7 @@ use App\Users\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -45,33 +46,43 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+//    /**
+//     * Get a validator for an incoming registration request.
+//     *
+//     * @param  array  $data
+//     * @return \Illuminate\Contracts\Validation\Validator
+//     */
+//    protected function validator(array $data)
+//    {
+//        return Validator::make($data, [
+//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+//            'delivery' => 'required_without_all: pickup',
+//            'pickup' => 'required_without_all: delivery'
+//        ]);
+//    }
 
     protected function create(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'delivery' => 'required_unless: pick_up,',
+            'pick_up' => 'required_unless: delivery,'
+        ]);
+        if($validator->fails()) {
+            return redirect('signUp')->withErrors($validator)->withInput();
+        }
         $userId = $this->insertQuery($request);
         (new ProfileController())->create($request, $userId);
         (new AuthorizedUserController())->create($request, $userId);
         $email = ['email'=>$request['email']];
+        $this->sendEmail($request);
+
         return view('registerConfirmation', $email);
     }
 
     private function insertQuery($request)
     {
-        $coordinates = (new Location())->getCoordinates($request); info('coordinates:: ', [$coordinates]);
+        //$coordinates = (new Location())->getCoordinates($request);
 
         $user = (new User());
         $user->first_name =  $request['first_name'];
@@ -80,5 +91,17 @@ class RegisterController extends Controller
         $user->password = Hash::make($request['password']);
         $user->save();
         return  $user->id;
+    }
+
+    public function sendEmail($request)
+    {
+        $name = $request['first_name'] . ' ' . $request['last_name'];
+
+        Mail::send('email', ['name' => ucwords($name)], function ($message) use ($request) {
+            $message->from(env('MAIL_USERNAME'), 'RPM Express Couriers');
+            $message->to($request['email']);
+            //$message->cc(env('MAIL_USERNAME'));
+            $message->subject('Welcome to RPM Family');
+        });
     }
 }

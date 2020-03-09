@@ -80,8 +80,10 @@
 											out any pending packages. 
 									   </p>
 									   <div align='center'>
-											<img class='myAppButtoms' alt="visa" src="images/services/gp.png">
-											<img class='myAppButtoms' alt="master card" src="images/services/as.png">
+                                           <a href="https://play.google.com/store/apps/details?id=com.rpmexpresscouriers.customerapp">
+                                               <img class='myAppButtoms' alt="google play" src="images/services/gp.png">
+                                           </a>
+{{--											<img class='myAppButtoms' alt="app store" src="images/services/as.png">--}}
 										</div>
                                     </div>
                                 </article>
