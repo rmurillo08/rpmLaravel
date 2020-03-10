@@ -144,8 +144,8 @@
                                                         </tr>
                                                         @foreach($authUsers AS $user)
                                                             <tr>
-                                                                <td class='mine'>{{$user['name']}}</td>
-                                                                <td class='mine'>{{$user['telephone']}}</td>
+                                                                <td class='mine' contenteditable="true">{{$user['name']}}</td>
+                                                                <td class='mine' contenteditable="true">{{$user['telephone']}}</td>
                                                                 <td class='mine'>{{$user['authId']}}</td>
                                                             </tr>
                                                         @endforeach
