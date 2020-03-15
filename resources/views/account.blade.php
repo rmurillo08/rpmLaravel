@@ -31,7 +31,8 @@
                                 <h3 class="post_title" id='yellow'>
                                     MY ACCOUNT
                                 </h3>
-                                <form class="myForm1" method="post" action="{{URL:: to('account')}}" id='backgroundColor'>
+                                <form class="myForm1" method="post" action="{{URL:: to('account')}}"
+                                      id='backgroundColor'>
                                     {{csrf_field()}}
                                     <p class='leftPadding topPadding'>Main Contact Information</p>
                                     <p>
@@ -53,41 +54,42 @@
                                     <p>
                                         <label id='label1'>Identification Number
                                             <input type="text" name="identificationNumber"
-                                                   placeholder= '{{$idNumber}}' readonly>
+                                                   placeholder='{{$idNumber}}' readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Primary Contact Number
                                             <input type="text" name="securityCode"
-                                                   placeholder= '{{$primaryTelephone}}' readonly>
+                                                   placeholder='{{$primaryTelephone}}' readonly>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Secondary Contact Number
                                             <input type="text" name="securityCode"
-                                                   placeholder= '{{$secondaryTelephone}}' readonly>
+                                                   placeholder='{{$secondaryTelephone}}' readonly>
                                         </label>
                                     </p>
                                     <p class='leftPadding'>Delivery information</p>
                                     <p>
                                         <label id='label1'>Address 1
-                                            <input type="text" name="primary_address" value='{{$primaryAddress}}' required>
+                                            <input type="text" name="primary_address" value='{{$primaryAddress}}'
+                                                   required>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Address 2
                                             <input type="text" name="secondary_address"
-                                                   value= '{{$secondaryAddress}}'>
+                                                   value='{{$secondaryAddress}}'>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>City
-                                            <input type="text" name="city" value= '{{$city}}' required>
+                                            <input type="text" name="city" value='{{$city}}' required>
                                         </label>
                                     </p>
                                     <p>
                                         <label id='label1'>Country
-                                            <input type="text" name="country" value= '{{$country}}' required>
+                                            <input type="text" name="country" value='{{$country}}' required>
                                         </label>
                                     </p>
                                     <p class='bottomLeftPadding mybuttoms'>
@@ -96,18 +98,24 @@
                                         </a>
                                     <p/>
                                     <!-- basic modal -->
-                                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
+                                         aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title" id="myModalLabel">Update Information</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Any changes to the delivery address will be reflected on your account 48 hours after the update has been made. </p>
+                                                    <p>Any changes to the delivery address will be reflected on your
+                                                        account 48 hours after the update has been made. </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-default " name="submit">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit" class="btn btn-default " name="submit">Save
+                                                        changes
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,20 +123,24 @@
                                 </form>
                                 <form>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="delivery" value='delivery' {{$delivery === 1 ? 'checked' : ''}}/>
+                                        <input type="checkbox" name="delivery"
+                                               value='delivery' {{$delivery === 1 ? 'checked' : ''}}/>
                                         <label class="custom-control-label bottomPadding">I have opt in to have all of
                                             my packages deliver to the address listed above.</label>
-                                        <input type="checkbox" name="pickup" value='pickup' {{$pickup === 1 ? 'checked' : ''}}/>
+                                        <input type="checkbox" name="pickup"
+                                               value='pickup' {{$pickup === 1 ? 'checked' : ''}}/>
                                         <label class="custom-control-label bottomPadding">I will pick up all my packages
                                             at the RPM main office. </label>
                                     </div>
                                 </form>
                                 <p>Other Account Settings</p>
-                                <form  class="myForm1" id='updateAuthUsers' method="post" action="{{URL:: to('account')}}">
+                                <form class="myForm1" id='updateAuthUsers' method="post"
+                                      action="{{URL:: to('account')}}">
                                     {{csrf_field()}}
                                     <div class="sc_accordion sc_accordion_style_1" data-active="0" role="tablist">
                                         <div class="sc_accordion_item sc_active">
-                                            <h5 class="sc_accordion_title" role="tab" id="ui-id-1" aria-controls="ui-id-2">
+                                            <h5 class="sc_accordion_title" role="tab" id="ui-id-1"
+                                                aria-controls="ui-id-2">
                                             <span
                                                 class="sc_accordion_icon sc_accordion_icon_closed icon-down-open"></span>
                                                 <span
@@ -146,12 +158,19 @@
                                                         </tr>
                                                         @for ($i = 0; $i < 5; $i++)
                                                             <tr>
-{{--                                                                <td class='mine'><input class="col-lg-offset-4" style="width: 90%" type="text" name="authUserName{{$i}}" value='{{ $authUsers[$i]['name'] ?? 'Add New User' }}'></td>--}}
-{{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserTelephone{{$i}}" value='{{ $authUsers[$i]['telephone'] ?? 'NA' }}'></td>--}}
-{{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserId{{$i}}" value='{{ $authUsers[$i]['authId'] ?? 'NA' }}' readonly></td>--}}
-                                                                <td class='mine' contenteditable="true" data-field="name{{$i}}"><div class="row_data" edit_type="click" col_name="name" value="$authUsers[$i]['name']"> {{$authUsers[$i]['name'] ?? 'Add New User'}}</div></td>
-                                                                <td class='mine' contenteditable="true" data-field="phone{{$i}}">{{$authUsers[$i]['telephone'] ?? 'NA'}}</td>
-                                                                <td class='mine' data-field="id{{$i}}">{{$authUsers[$i]['authId'] ?? 'NA'}}</td>
+                                                                {{--                                                                <td class='mine'><input class="col-lg-offset-4" style="width: 90%" type="text" name="authUserName{{$i}}" value='{{ $authUsers[$i]['name'] ?? 'Add New User' }}'></td>--}}
+                                                                {{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserTelephone{{$i}}" value='{{ $authUsers[$i]['telephone'] ?? 'NA' }}'></td>--}}
+                                                                {{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserId{{$i}}" value='{{ $authUsers[$i]['authId'] ?? 'NA' }}' readonly></td>--}}
+                                                                <td class='mine' contenteditable="true"
+                                                                    data-field="name{{$i}}">
+                                                                    <div class="row_data" edit_type="click"
+                                                                         col_name="name"
+                                                                         value="$authUsers[$i]['name']"> {{$authUsers[$i]['name'] ?? 'Add New User'}}</div>
+                                                                </td>
+                                                                <td class='mine' contenteditable="true"
+                                                                    data-field="phone{{$i}}">{{$authUsers[$i]['telephone'] ?? 'NA'}}</td>
+                                                                <td class='mine'
+                                                                    data-field="id{{$i}}">{{$authUsers[$i]['authId'] ?? 'NA'}}</td>
                                                             </tr>
                                                         @endfor
                                                     </table>
@@ -165,18 +184,24 @@
                                         </a>
                                     <p/>
                                     <!-- basic modal -->
-                                    <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog"
+                                         aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title" id="myModalLabel">Update Information</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Any changes to the authorized users will be reflected on your account 48 hours after the update has been made. </p>
+                                                    <p>Any changes to the authorized users will be reflected on your
+                                                        account 48 hours after the update has been made. </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button id= 'editForm' type="submit" class="btn btn-default " name="submit">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button id='editForm' type="submit" class="btn btn-default "
+                                                            name="submit">Save changes
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -253,11 +278,11 @@
                     </div>
                 </div>
             </div>
-    </section>
-</div>
-<footer>
-    @include('includes.footer')
-</footer>
+        </section>
+    </div>
+    <footer>
+        @include('includes.footer')
+    </footer>
 </div>
 </div>
 <div class="preloader">
@@ -300,30 +325,29 @@
     //     })
     // });
 
-// var row_id = $(this).closest('tr').attr('row_id');
-// var row_div = $(this);
-// var colName = row_div.attr('col_name');
-// var colVal = row_div.html();
-// var authUsers = {};
-// authUsers[colName] = colVal;
-//
-// $.extend(authUsers, {row_id:row_id});
-
+    // var row_id = $(this).closest('tr').attr('row_id');
+    // var row_div = $(this);
+    // var colName = row_div.attr('col_name');
+    // var colVal = row_div.html();
+    // var authUsers = {};
+    // authUsers[colName] = colVal;
+    //
+    // $.extend(authUsers, {row_id:row_id});
 
 
     var table = document.getElementById('authTable');
 
-    for(let i = 0; i < table.rows.length; i++) {
+    for (let i = 0; i < table.rows.length; i++) {
         table.rows[i].oninput = function () {
-           // rIndex = this.rowIndex;
-           // console.log(rIndex);
-           data[i+'Name'] = document.getElementById("name").value.cells[0].innerHTML;
-           data[i+'phone'] =document.getElementById("telephone").value.cells[1].innerHTML;
-           data[i+'id'] = document.getElementById("id").value.cells[2].innerHTML;
+            // rIndex = this.rowIndex;
+            // console.log(rIndex);
+            data[i + 'Name'] = document.getElementById("name").value.cells[0].innerHTML;
+            data[i + 'phone'] = document.getElementById("telephone").value.cells[1].innerHTML;
+            data[i + 'id'] = document.getElementById("id").value.cells[2].innerHTML;
         };
         console.log('thi sis the data:: ', data);
     }
-    $('#editButton').attr('action', '/authUser/updated/' +data);
+    $('#editButton').attr('action', '/authUser/updated/' + data);
 
 </script>
 </body>

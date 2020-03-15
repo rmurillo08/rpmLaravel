@@ -9,17 +9,17 @@ class AuthorizedUserController
 {
     public function create($request, $userId): void
     {
-        for($i = 1; $i < 6; $i++) {
-            $key = 'authorized'.$i.'FirstName';
-            $lastName = 'authorized'.$i.'LastName';
-            if(isset($request[$key]) && !empty($request[$key])) {
+        for ($i = 1; $i < 6; $i++) {
+            $key = 'authorized' . $i . 'FirstName';
+            $lastName = 'authorized' . $i . 'LastName';
+            if (isset($request[$key]) && !empty($request[$key])) {
                 $users[] = [
                     'firstName' => $request[$key],
                     'lastName' => $request[$lastName],
                 ];
             }
         }
-         $this->createQuery($users ?? [], $userId);
+        $this->createQuery($users ?? [], $userId);
     }
 
     public function createQuery($users, $userId): void
@@ -27,8 +27,8 @@ class AuthorizedUserController
         foreach ($users as $user) {
             $authorizedUser = (new AutorizedUsers());
             $authorizedUser->user_id = $userId;
-            $authorizedUser->first_name =  $user['firstName'];
-            $authorizedUser->last_name =  $user['lastName'];
+            $authorizedUser->first_name = $user['firstName'];
+            $authorizedUser->last_name = $user['lastName'];
             $authorizedUser->save();
         }
     }
@@ -47,8 +47,8 @@ class AuthorizedUserController
     {
         $i = 1;
         foreach ($users as $user) {
-            $first = 'authorized'. $i . 'FirstName';
-            $last = 'authorized'. $i . 'LastName';
+            $first = 'authorized' . $i . 'FirstName';
+            $last = 'authorized' . $i . 'LastName';
             $authorizedUsers[] = [
                 $first => $user->first_name,
                 $last => $user->last_name
@@ -65,7 +65,7 @@ class AuthorizedUserController
 
     private function updateQuery($data)
     {
-        DB::table('autorized_users')
+        \DB::table('autorized_users')
             ->where('id', $data['id'])
             ->update(['name' => $data['name'], 'phoneNumber' => $data['phoneNumber']]);
     }
