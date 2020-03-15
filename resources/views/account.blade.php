@@ -124,7 +124,7 @@
                                     </div>
                                 </form>
                                 <p>Other Account Settings</p>
-                                <form  class="updateAuthUsers" id='updateAuthUsers' method="post" action="{{URL:: to('authUser/updated')}}">
+                                <form  class="myForm1" id='updateAuthUsers' method="post" action="{{URL:: to('account')}}">
                                     {{csrf_field()}}
                                     <div class="sc_accordion sc_accordion_style_1" data-active="0" role="tablist">
                                         <div class="sc_accordion_item sc_active">
@@ -146,6 +146,9 @@
                                                         </tr>
                                                         @for ($i = 0; $i < 5; $i++)
                                                             <tr>
+{{--                                                                <td class='mine'><input class="col-lg-offset-4" style="width: 90%" type="text" name="authUserName{{$i}}" value='{{ $authUsers[$i]['name'] ?? 'Add New User' }}'></td>--}}
+{{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserTelephone{{$i}}" value='{{ $authUsers[$i]['telephone'] ?? 'NA' }}'></td>--}}
+{{--                                                                <td class='mine'><input style="width: 90%" type="text" name="authUserId{{$i}}" value='{{ $authUsers[$i]['authId'] ?? 'NA' }}' readonly></td>--}}
                                                                 <td class='mine' contenteditable="true" data-field="name{{$i}}"><div class="row_data" edit_type="click" col_name="name" value="$authUsers[$i]['name']"> {{$authUsers[$i]['name'] ?? 'Add New User'}}</div></td>
                                                                 <td class='mine' contenteditable="true" data-field="phone{{$i}}">{{$authUsers[$i]['telephone'] ?? 'NA'}}</td>
                                                                 <td class='mine' data-field="id{{$i}}">{{$authUsers[$i]['authId'] ?? 'NA'}}</td>
@@ -317,7 +320,7 @@
            data[i+'Name'] = document.getElementById("name").value.cells[0].innerHTML;
            data[i+'phone'] =document.getElementById("telephone").value.cells[1].innerHTML;
            data[i+'id'] = document.getElementById("id").value.cells[2].innerHTML;
-        }
+        };
         console.log('thi sis the data:: ', data);
     }
     $('#editButton').attr('action', '/authUser/updated/' +data);

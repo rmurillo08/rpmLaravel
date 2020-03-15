@@ -12,3 +12,5 @@
 <style id="custom-style-inline-css" type="text/css"></style>
 <link rel='stylesheet' type='text/css' href="{{asset('css/responsive.css')}}"></link>
 {{--<link rel='stylesheet' type='text/css' href="{{asset('custom_tools/css/front.customizer.css')}}"></link>--}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
