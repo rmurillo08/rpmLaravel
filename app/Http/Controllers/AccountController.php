@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class AccountController extends Controller
 {
    public function get()
@@ -66,6 +68,22 @@ class AccountController extends Controller
            ];
        }
        return $authUsersData ?? [];
+   }
+
+   public function update(Request $request)
+   {
+       $userId = auth()->user()->id;
+       $data = $request->all();
+       $this->updateQuery($userId, $data);
+       return back();
+   }
+
+   private function updateQuery($userId, $data)
+   {
+       \DB::table('profiles')
+           ->where('user_id', $userId)
+           ->update(['primary_address' => $data['primary_address'], 'secondary_address' => $data['secondary_address'],
+               'city'=>$data['city'], 'country'=>$data['country']]);
    }
 }
 

@@ -36,24 +36,25 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                <!-- Default unchecked -->
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id={{$invoice['id']}} >
-                                                    <label class="custom-control-label" for="{{$invoice['id']}}"></label>
-                                                </div>
-                                            </th>
-                                            <td>{{$invoice['billId']}}</td>
-                                            <td>{{$invoice['invoiceNumber']}}</td>
-                                            <td>{{$invoice['shipper']}}</td>
-                                            <td>{{$invoice['trackingNumber']}}</td>
-                                            <td>{{$invoice['description']}}</td>
-                                            <td>{{$invoice['weight']}}</td>
-                                            <td>{{$invoice['value']}}</td>
-                                            <td>{{$invoice['status']}}</td>
-                                            <td>{{$invoice['amount']}}</td>
-                                        </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <!-- Default unchecked -->
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id={{$invoice['id']}} >
+                                                        <label class="custom-control-label" for="{{$invoice['id']}}"></label>
+                                                    </div>
+                                                </th>
+{{--                                                <td><input type="checkbox" name="checkbox[]" value={{$invoice['id']}}/></td>--}}
+                                                <td class="tinyBorder">{{$invoice['billId']}}</td>
+                                                <td class="tinyBorder">{{$invoice['invoiceNumber']}}</td>
+                                                <td class="tinyBorder">{{$invoice['shipper']}}</td>
+                                                <td class="tinyBorder">{{$invoice['trackingNumber']}}</td>
+                                                <td class="tinyBorder">{{$invoice['description']}}</td>
+                                                <td class="tinyBorder">{{$invoice['weight']}}</td>
+                                                <td class="tinyBorder">{{$invoice['value']}}</td>
+                                                <td class="tinyBorder">{{$invoice['status']}}</td>
+                                                <td class="tinyBorder">{{$invoice['amount']}}</td>
+                                            </tr>
                                         </tbody>
                                         <p>Click on the airway bill number to view breakdown of the individual charges and details</p>
                                     </table>
@@ -79,15 +80,15 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>{{$invoice['billId']}}</td>
-                                        <td>{{$invoice['invoiceNumber']}}</td>
-                                        <td>{{$invoice['shipper']}}</td>
-                                        <td>{{$invoice['trackingNumber']}}</td>
-                                        <td>{{$invoice['description']}}</td>
-                                        <td>{{$invoice['weight']}}</td>
-                                        <td>{{$invoice['value']}}</td>
-                                        <td>{{$invoice['status']}}</td>
-                                        <td>{{$invoice['amount']}}</td>
+                                        <td class="tinyBorder">{{$invoice['billId']}}</td>
+                                        <td class="tinyBorder">{{$invoice['invoiceNumber']}}</td>
+                                        <td class="tinyBorder">{{$invoice['shipper']}}</td>
+                                        <td class="tinyBorder">{{$invoice['trackingNumber']}}</td>
+                                        <td class="tinyBorder">{{$invoice['description']}}</td>
+                                        <td class="tinyBorder">{{$invoice['weight']}}</td>
+                                        <td class="tinyBorder">{{$invoice['value']}}</td>
+                                        <td class="tinyBorder">{{$invoice['status']}}</td>
+                                        <td class="tinyBorder">{{$invoice['amount']}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

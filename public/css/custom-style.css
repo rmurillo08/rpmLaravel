@@ -330,4 +330,8 @@ padding-top: 2em;
 .img2 {
   float: left;
 }
+.tinyBorder {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
 
