@@ -270,5 +270,58 @@
 <script type="text/javascript" src="js/_packed.js"></script>
 <script type="text/javascript" src="js/shortcodes.min.js"></script>
 <script type="text/javascript" src="js/_main.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+
+<script type="text/javascript">
+    // $(document).ready(function() {
+    //
+    //     var table = $('#authTable').DataTable();
+    //
+    //     table.on('click', '.edit', function () {
+    //
+    //         $tr = $(this).closest('tr');
+    //         if($($tr).hasClass('child')) {
+    //             $tr = $tr.prev('.parent');
+    //
+    //         }
+    //         var data = table.row($tr).data();
+    //         console.log(data);
+    //
+    //         $(#name).val(data[1]);
+    //         $(#phone).val(data[2]);
+    //
+    //         $(#editForm).attr('action', '/authUser/updated/' +data[0]);
+    //     })
+    // });
+
+// var row_id = $(this).closest('tr').attr('row_id');
+// var row_div = $(this);
+// var colName = row_div.attr('col_name');
+// var colVal = row_div.html();
+// var authUsers = {};
+// authUsers[colName] = colVal;
+//
+// $.extend(authUsers, {row_id:row_id});
+
+
+
+    var table = document.getElementById('authTable');
+
+    for(let i = 0; i < table.rows.length; i++) {
+        table.rows[i].oninput = function () {
+           // rIndex = this.rowIndex;
+           // console.log(rIndex);
+           data[i+'Name'] = document.getElementById("name").value.cells[0].innerHTML;
+           data[i+'phone'] =document.getElementById("telephone").value.cells[1].innerHTML;
+           data[i+'id'] = document.getElementById("id").value.cells[2].innerHTML;
+        }
+        console.log('thi sis the data:: ', data);
+    }
+    $('#editButton').attr('action', '/authUser/updated/' +data);
+
+</script>
 </body>
 </html>

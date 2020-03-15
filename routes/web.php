@@ -84,9 +84,7 @@ Route::post('authUser/updated', 'AuthorizedUserController@update')->middleware('
 Route::get('prealert', function () {
     return view('prealert');
 })->middleware('auth');
-Route::get('packages', function () {
-    return view('packages');
-})->middleware('auth');
+Route::get('packages', 'Packages\PackageController@get')->middleware('auth');
 Route::get('invoice', 'Invoices\InvoiceController@get')->middleware('auth');
 Route::get('checkOut', function () {
     return view('checkout');
