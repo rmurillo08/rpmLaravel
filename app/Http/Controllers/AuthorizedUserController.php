@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Users\AutorizedUsers;
+use Illuminate\Http\Request;
 
 class AuthorizedUserController
 {
@@ -55,5 +56,17 @@ class AuthorizedUserController
             $i++;
         }
         return $authorizedUsers ?? [];
+    }
+
+    public function update(Request $request)
+    {
+        info('this is the data that we getting in the new routes auth user:: ', [$request]);
+    }
+
+    private function updateQuery($data)
+    {
+        DB::table('autorized_users')
+            ->where('id', $data['id'])
+            ->update(['name' => $data['name'], 'phoneNumber' => $data['phoneNumber']]);
     }
 }

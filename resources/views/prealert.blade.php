@@ -59,7 +59,7 @@
                                         </label>
                                     </p>
                                     <label id='label1'>Description
-                                        <select id="item" name="item">
+                                        <select id="item" name="item" required>
                                             <option value="description" selected="selected">Choose a Category</option>
                                             <option value="Alarm (Motor Vehicle)">Alarm (Motor Vehicle)</option>
                                             <option value="Album"> Album</option>
@@ -81,9 +81,12 @@
                                             <option value="CD ROM (Software)"> CD ROM (Software)</option>
                                             <option value="CDs"> CDs</option>
                                             <option value="CDs (music)"> CDs (music)</option>
-                                            <option value="Cellular Phones and Accessories"> Cellular Phones and Accessories</option>
+                                            <option value="Cellular Phones and Accessories"> Cellular Phones and
+                                                Accessories
+                                            </option>
                                             <option value="Christmas Lights"> Christmas Lights</option>
-                                            <option value="Christmas Tree (Artificial)"> Christmas Tree (Artificial)</option>
+                                            <option value="Christmas Tree (Artificial)"> Christmas Tree (Artificial)
+                                            </option>
                                             <option value="Coffee"> Coffee</option>
                                             <option value="Computer Parts"> Computer Parts</option>
                                             <option value="Computer Systems"> Computer Systems</option>
@@ -102,12 +105,18 @@
                                             <option value="Furniture"> Furniture</option>
                                             <option value="Game Accessories"> Game Accessories</option>
                                             <option value="Hand Held Tools"> Hand Held Tools</option>
-                                            <option value="Head Lights (Motor Vehicle)"> Head Lights (Motor Vehicle)</option>
+                                            <option value="Head Lights (Motor Vehicle)"> Head Lights (Motor Vehicle)
+                                            </option>
                                             <option value="Headphones"> Headphones</option>
                                             <option value="Ink Cartridges"> Ink Cartridges</option>
-                                            <option value="iPad (no Sim Card Slot) / Tablets PCs"> iPad (no Sim Card Slot) / Tablets PCs</option>
-                                            <option value="iPad ( With Sim Card Slot)">iPad ( With Sim Card Slot)</option>
-                                            <option value="iPods / Musical Storage Devices"> iPods / Musical Storage Devices</option>
+                                            <option value="iPad (no Sim Card Slot) / Tablets PCs"> iPad (no Sim Card
+                                                Slot) / Tablets PCs
+                                            </option>
+                                            <option value="iPad ( With Sim Card Slot)">iPad ( With Sim Card Slot)
+                                            </option>
+                                            <option value="iPods / Musical Storage Devices"> iPods / Musical Storage
+                                                Devices
+                                            </option>
                                             <option value="Jewelry"> Jewelry</option>
                                             <option value="Kitchen Accessories"> Kitchen Accessories</option>
                                             <option value="Lab Ware"> Lab Ware</option>
@@ -121,7 +130,9 @@
                                             <option value="Plumbing"> Plumbing</option>
                                             <option value="Pressure Washer"> Pressure Washer</option>
                                             <option value="Printer (3 in one)"> Printer (3 in one)</option>
-                                            <option value="Printer ( not 3 in one Machines)"> Printer ( not 3 in one Machines)</option>
+                                            <option value="Printer ( not 3 in one Machines)"> Printer ( not 3 in one
+                                                Machines)
+                                            </option>
                                             <option value="Printer Cartridge"> Printer Cartridge</option>
                                             <option value="Processors"> Processors</option>
                                             <option value="Projector Screen"> Projector Screen</option>
@@ -133,7 +144,8 @@
                                             <option value="Sunglasses"> Sunglasses</option>
                                             <option value="Toys"> Toys</option>
                                             <option value="Video Game Console"> Video Game Console</option>
-                                            <option value="Vitamins & Food Supplements"> Vitamins & Food Supplements</option>
+                                            <option value="Vitamins & Food Supplements"> Vitamins & Food Supplements
+                                            </option>
                                             <option value="Watches"> Watches</option>
                                             <option value="Wheel Chair"> Wheel Chair</option>
                                             <option value="Wig - Human Hair"> Wig - Human Hair</option>
@@ -149,20 +161,23 @@
                                     </p>
                                     <p>
                                         <label id='label1'>Cost of Shipment in US$:
-                                            <input type="text" name="cost" placeholder='$0.00'>
+                                            <input type="text" name="cost" placeholder='$0.00' required>
                                             (Including Shipping)
                                         </label>
                                         <br>
                                 </div>
-                                <p></p>
-                                *You are responsible for listing the correct and true amount of your shipment. This
-                                information is given to customs.
-                                <div class="col-sm-12" align='center'>
-                                    <input type="image" name="submit" src="images/account/preAlert.png">
-                                    <p> By pre-alerting you accept our <a href="terms">terms and conditions</a>.
-                                    </p>
-                                </div>
+                                <p>
+                                    *You are responsible for listing the correct and true amount of your shipment. This
+                                    information is given to customs.
                                 </p>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-10 bottomPadding">
+                                        <input type="image" name="submit" src="images/account/preAlert.png">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" align="center">
+                                    <p> By pre-alerting you accept our <a href="terms">terms and conditions</a>.</p>
+                                </div>
                             </form>
                         </div>
                     </div>

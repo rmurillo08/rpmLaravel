@@ -60,10 +60,10 @@
                                                                     <div class="fields result">
                                                                         <label>The ﬁels above show in USD currency</label>
                                                                         <div class="dfield fields column2">
-                                                                            <input name="usd" class="field large" type="text" value="1" id="usdTotal" placeholder='$ USD'>
+                                                                            <input name="usdTotal" class="field large" type="text" value="1" id="usdTotal" placeholder='$ USD'>
                                                                         </div>
                                                                         <div class="dfield fields column2">
-                                                                            <input name="ttd" class="field large" type="text" value="27" id="ttdTotal" placeholder='$ TTD'>
+                                                                            <input name="ttdTotal" class="field large" type="text" value="27" id="ttdTotal" placeholder='$ TTD'>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 </section>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         $("#freight").click(function(){
 
@@ -98,8 +98,6 @@
                 });
             }
         });
-    });
-    $(document).ready(function() {
         $("#insurance").click(function(){
 
             if($(this).prop("checked") == true) {
@@ -113,8 +111,6 @@
                 });
             }
         });
-    });
-    $(document).ready(function() {
         $("#duty").click(function(){
 
             if($(this).prop("checked") == true) {
@@ -128,13 +124,11 @@
                 });
             }
         });
-    });
-    $(document).ready(function() {
         $("#vat").click(function() {
 
             if($(this).prop("checked") == true) {
                 $("#usdTotal").text(function(i, origText) {
-                    localStorage['oldValue'] = origText;
+                    localStorage.oldValue = origText;
                     return (+origText + ((origText * 10)/100));
                 });
             } else{
@@ -143,8 +137,6 @@
                 });
             }
         });
-    });
-    $(document).ready(function() {
         $("#usdTotal").change(function() {
             $("#ttdTotal").text(function(i, origText) {
                 return (+origText * 27 );

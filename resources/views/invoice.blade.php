@@ -6,6 +6,8 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
     @include('includes.head')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
 </head>
 <body class="page body_style_fullscreen body_filled article_style_stretch top_panel_opacity_solid top_panel_show top_panel_above user_menu_show sidebar_hide fixed_top_menu">
     <div class="body_wrap">
@@ -20,7 +22,7 @@
 						<div class="col-sm-12">
 							<h4 id='yellow'><b>Unpaid Invoices</b></h4>
                             @foreach($pendings AS $invoice)
-                                    <table class='tg1 mine'>
+                                    <table id = 'checkBox' class='tg1 mine'>
                                         <thead>
                                         <tr class='mine'>
                                             <th class="mine">Select</th>
@@ -107,9 +109,44 @@
 <div class="preloader">
     <div class="preloader_image"></div>
 </div>
+    <script>
+        $(document).ready(function() {
+            $('#checkBox').DataTable( {
+                columnDefs: [ {
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets:   0
+                } ],
+                select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                },
+                order: [[ 1, 'asc' ]]
+            } );
+
+            var events = $('#events');
+            var table = $('#example').DataTable( {
+                dom: 'Bfrtip',
+                select: true,
+                buttons: [
+                    {
+                        text: 'Get selected data',
+                        action: function () {
+                            var count = table.rows( { selected: true } ).count();
+
+                            events.prepend( '<div>'+count+' row(s) selected</div>' );
+                        }
+                    }
+                ]
+            } );
+        } );
+    </script>
     <script type="text/javascript" src="js/vendor/jquery.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+{{--    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>--}}
 
     <!--<script type="text/javascript" src="custom_tools/js/front.customizer.js"></script>
     <script type="text/javascript" src="custom_tools/js/skin.customizer.js"></script>-->

@@ -34,8 +34,6 @@ info('here must be here:: ');
 
     private function insertQuery($request)
     {
-        //$coordinates = (new Location())->getCoordinates($request);
-
         $user = (new User());
         $user->first_name =  $request['first_name'];
         $user->last_name =  $request['last_name'];
