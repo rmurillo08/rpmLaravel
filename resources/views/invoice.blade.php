@@ -21,8 +21,9 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<h4 id='yellow'><b>Unpaid Invoices</b></h4>
+                            <form id="myform" method="post">
                             @foreach($pendings AS $invoice)
-                                    <table id = 'checkBox' class='tg1 mine'>
+                                    <table id = 'mytable' class='tg1 mine'>
                                         <thead>
                                         <tr class='mine'>
                                             <th class="mine">Select</th>
@@ -60,6 +61,7 @@
                                         </tbody>
                                         <p>Click on the airway bill number to view breakdown of the individual charges and details</p>
                                     </table>
+                            </form>
                             @endforeach
                             @if(empty($pendings))
                                 No Pending Invoices
@@ -109,36 +111,69 @@
 <div class="preloader">
     <div class="preloader_image"></div>
 </div>
-    <script>
-        $(document).ready(function() {
-            $('#checkBox').DataTable( {
-                columnDefs: [ {
-                    orderable: false,
-                    className: 'select-checkbox',
-                    targets:   0
-                } ],
-                select: {
-                    style:    'os',
-                    selector: 'td:first-child'
-                },
-                order: [[ 1, 'asc' ]]
-            } );
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+            // $('#checkBox').DataTable( {
+            //     columnDefs: [ {
+            //         orderable: false,
+            //         className: 'select-checkbox',
+            //         targets:   0
+            //     } ],
+            //     select: {
+            //         style:    'os',
+            //         selector: 'td:first-child'
+            //     },
+            //     order: [[ 1, 'asc' ]]
+            // } );
+            //
+            // var events = $('#events');
+            // var table = $('#example').DataTable( {
+            //     dom: 'Bfrtip',
+            //     select: true,
+            //     buttons: [
+            //         {
+            //             text: 'Get selected data',
+            //             action: function () {
+            //                 var count = table.rows( { selected: true } ).count();
+            //
+            //                 events.prepend( '<div>'+count+' row(s) selected</div>' );
+            //             }
+            //         }
+            //     ]
+            // } );
 
-            var events = $('#events');
-            var table = $('#example').DataTable( {
-                dom: 'Bfrtip',
-                select: true,
-                buttons: [
+
+
+        <script>
+            $(document).ready(function() {
+            var mytable = $("#mytable").DataTable ({
+                ajax:'data.json',
+                columnDefs: [
                     {
-                        text: 'Get selected data',
-                        action: function () {
-                            var count = table.rows( { selected: true } ).count();
-
-                            events.prepend( '<div>'+count+' row(s) selected</div>' );
+                        targets:0,
+                        checkboxes: {
+                            selectRow: true
                         }
                     }
-                ]
-            } );
+                ],
+                select: {
+                    style: 'multi'
+                },
+                order: [[1, 'asc']]
+            });console.log('data in variable:: ', mytable);
+            $('#myform').on('submit', function (e) {
+                var form = this;
+                var rowsel = mytable.column(0).checkboxes.selected();
+                $.each(rowsel, function (index, rowId) {
+                    $(form).append(
+                        $('<input>').attr('type', 'hidden').attr('name', 'id[]').val(rowId)
+                    )
+                });
+                $("#view-rows").text(rowsel.join(","));
+                $("#view-form").text($(form).serialize());
+                $('input[name="id\[\]"]', form).remove();
+                e.preventDefault()
+            })
         } );
     </script>
     <script type="text/javascript" src="js/vendor/jquery.js"></script>
