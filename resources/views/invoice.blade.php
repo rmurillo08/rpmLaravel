@@ -8,6 +8,8 @@
     @include('includes.head')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 </head>
 <body class="page body_style_fullscreen body_filled article_style_stretch top_panel_opacity_solid top_panel_show top_panel_above user_menu_show sidebar_hide fixed_top_menu">
     <div class="body_wrap">
@@ -23,7 +25,7 @@
 							<h4 id='yellow'><b>Unpaid Invoices</b></h4>
                             <form id="myform" method="post">
                             @foreach($pendings AS $invoice)
-                                    <table id = 'mytable' class='tg1 mine'>
+                                    <table id = 'tblPosts' class='tg1 mine'>
                                         <thead>
                                         <tr class='mine'>
                                             <th class="mine">Select</th>
@@ -43,12 +45,12 @@
                                                 <th scope="row">
                                                     <!-- Default unchecked -->
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id={{$invoice['id']}} >
+                                                        <input id={{$invoice['id']}} type="checkbox" value={{$invoice['id']}} class="custom-control-input">
                                                         <label class="custom-control-label" for="{{$invoice['id']}}"></label>
                                                     </div>
                                                 </th>
 {{--                                                <td><input type="checkbox" name="checkbox[]" value={{$invoice['id']}}/></td>--}}
-                                                <td class="tinyBorder">{{$invoice['billId']}}</td>
+                                                <td class="tinyBorder"><a>{{$invoice['billId']}}</a></td>
                                                 <td class="tinyBorder">{{$invoice['invoiceNumber']}}</td>
                                                 <td class="tinyBorder">{{$invoice['shipper']}}</td>
                                                 <td class="tinyBorder">{{$invoice['trackingNumber']}}</td>
@@ -63,7 +65,10 @@
                                     </table>
                             </form>
                             @endforeach
-                            @if(empty($pendings))
+                            @if(!empty($pendings))
+                            <input type="button" id="btnClick" value="Pay Selected Invoices" />
+                            @endif
+                        @if(empty($pendings))
                                 No Pending Invoices
                             @endif
                             <h4 id='yellow'><b>INVOICE HISTORY</b></h4>
@@ -111,81 +116,34 @@
 <div class="preloader">
     <div class="preloader_image"></div>
 </div>
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-            // $('#checkBox').DataTable( {
-            //     columnDefs: [ {
-            //         orderable: false,
-            //         className: 'select-checkbox',
-            //         targets:   0
-            //     } ],
-            //     select: {
-            //         style:    'os',
-            //         selector: 'td:first-child'
-            //     },
-            //     order: [[ 1, 'asc' ]]
-            // } );
-            //
-            // var events = $('#events');
-            // var table = $('#example').DataTable( {
-            //     dom: 'Bfrtip',
-            //     select: true,
-            //     buttons: [
-            //         {
-            //             text: 'Get selected data',
-            //             action: function () {
-            //                 var count = table.rows( { selected: true } ).count();
-            //
-            //                 events.prepend( '<div>'+count+' row(s) selected</div>' );
-            //             }
-            //         }
-            //     ]
-            // } );
 
+    <script type="text/javascript">
+        $(function () {
+            $("#btnClick").click(function () {
+                let selected = [];
 
-
-        <script>
-            $(document).ready(function() {
-            var mytable = $("#mytable").DataTable ({
-                ajax:'data.json',
-                columnDefs: [
-                    {
-                        targets:0,
-                        checkboxes: {
-                            selectRow: true
-                        }
-                    }
-                ],
-                select: {
-                    style: 'multi'
-                },
-                order: [[1, 'asc']]
-            });console.log('data in variable:: ', mytable);
-            $('#myform').on('submit', function (e) {
-                var form = this;
-                var rowsel = mytable.column(0).checkboxes.selected();
-                $.each(rowsel, function (index, rowId) {
-                    $(form).append(
-                        $('<input>').attr('type', 'hidden').attr('name', 'id[]').val(rowId)
-                    )
+                $("#tblPosts input[type=checkbox]:checked").each(function () {
+                    selected.push(this.value);
                 });
-                $("#view-rows").text(rowsel.join(","));
-                $("#view-form").text($(form).serialize());
-                $('input[name="id\[\]"]', form).remove();
-                e.preventDefault()
-            })
-        } );
+
+                if (selected.length > 0) {
+                    // alert("Selected values: " + selected.join(","));
+                    $.ajax({
+                        type: "POST",
+                        url: '{{URL:: to('test')}}',
+                        data:selected,
+                    }).done(function( selected ) {
+                        alert( selected );
+                    });
+                }
+            });
+        });
     </script>
     <script type="text/javascript" src="js/vendor/jquery.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
-{{--    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>--}}
-
-    <!--<script type="text/javascript" src="custom_tools/js/front.customizer.js"></script>
-    <script type="text/javascript" src="custom_tools/js/skin.customizer.js"></script>-->
-
     <script type="text/javascript" src="js/_packed.js"></script>
     <script type="text/javascript" src="js/shortcodes.min.js"></script>
     <script type="text/javascript" src="js/_main.js"></script>
