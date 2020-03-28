@@ -17,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password'
+        'FirstName', 'LastName', 'EmailAddress', 'PasswordHash', 'DateOfBirth', 'AccountNumber', 'AddressLine1',
+        'AddressLatitude', 'AddressLongitude', 'AdressLine2', 'City', 'Country', 'What3WordsString', 'PrimaryPhoneNumber',
+        'AlternatePhoneNumber', 'CompanyName', 'AccountTypeId', 'RouteId', 'IdentificationType', 'CreditLimit', 'IsSuspended',
+        'SuspensionReason', 'HasInsurance', 'AcceptCompanyCheques', 'IsCreditCardCustomer', 'IsOnlinePurchaseTaxExempted',
+        'IsEnabled', 'IsApproved', 'NeedsVerification', 'IsAccountFlagged', 'AccountFlaggedReason', 'AccountFlaggedDate',
+        'FlaggedBy', 'RewardPoints', 'RewardCardNumber', 'CreationSource', 'LastActive', 'LastUpdateSource'
     ];
 
     /**
@@ -26,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'PasswordHash',
     ];
 
     /**

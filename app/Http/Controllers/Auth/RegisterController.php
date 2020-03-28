@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Geocoder\Location;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AuthorizedUserController;
+use App\Http\Controllers\ContactController;
 use App\Providers\RouteServiceProvider;
 use App\Users\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -56,27 +55,40 @@ class RegisterController extends Controller
         if($validator->fails()) {
             return redirect('signUp')->withErrors($validator)->withInput();
         }
-        $request['accountNumber'] = random_int(500, 9999999);
-        $userId = $this->insertQuery($request);
-        (new ProfileController())->create($request, $userId);
-        (new AuthorizedUserController())->create($request, $userId);
+        $request['accountNumber'] = random_int(500, 999999);
+        $this->insertQuery($request);
+        (new ContactController())->create($request);
         $email = ['email'=>$request['email']];
         $this->sendEmail($request);
 
         return view('registerConfirmation', $email);
     }
 
-    private function insertQuery($request)
+    private function insertQuery($request) : void
     {
-        //$coordinates = (new Location())->getCoordinates($request);
+        $coordinates = (new Location())->getCoordinates($request);
 
         $user = (new User());
-        $user->first_name =  $request['first_name'];
-        $user->last_name =  $request['last_name'];
-        $user->email =  $request['email'];
-        $user->password = Hash::make($request['password']);
+        $user->FirstName =  $request['first_name'];
+        $user->LastName =  $request['last_name'];
+        $user->EmailAddress =  $request['email'];
+        $user->PasswordHash = Hash::make($request['password']);
+        $user->AccountNumber = $request['accountNumber'];
+        $user->AddressLine1 = $request['primary_address'];
+        $user->AddressLatitude = $coordinates['latitude'];
+        $user->AddressLongitude = $coordinates['longitude'];
+        $user->AddressLine2 = $request['secondary_address'];
+        $user->City = $request['city'];
+        $user->Country = $request['country'];
+        $user->PrimaryPhoneNumber = $request['primary_telephone'];
+        $user->AlternatePhoneNumber = $request['secondary_telephone'] ?? '';
+        $user->IdentificationNumber = $request['id_number'];
+        $user->IdentificationType = $request['id_type'];
+        $user->DeliveryCountry = $request['delivery_country'];
+        $user->Heard = $request['heard'];
+        $user->IsDelivery = !empty($request['delivery']) ? 1: 0;
+        $user->IsPickUp = !empty($request['pick_up']) ? 1 : 0;
         $user->save();
-        return  $user->id;
     }
 
     public function sendEmail($request)

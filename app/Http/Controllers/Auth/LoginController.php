@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -44,8 +42,8 @@ class LoginController extends Controller
     public function checkLogin(LoginRequest $request)
     {
         $userData = [
-            'email' => $request->get('log'),
-            'password' => $request->get('pwd'),
+            'EmailAddress' => $request->get('log'),
+            'PasswordHash' => $request->get('pwd'),
         ];
         if(Auth::attempt($userData)) {
 
