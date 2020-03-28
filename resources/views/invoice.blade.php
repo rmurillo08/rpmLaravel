@@ -24,7 +24,7 @@
 						<div class="col-sm-12">
 							<h4 id='yellow'><b>Unpaid Invoices</b></h4>
                             <form id="myform" method="post">
-                            @foreach($pendings AS $invoice)
+                                {{csrf_field()}}
                                     <table id = 'tblPosts' class='tg1 mine'>
                                         <thead>
                                         <tr class='mine'>
@@ -40,6 +40,7 @@
                                             <th class='mine'>Invoice Amount(TT$)</th>
                                         </tr>
                                         </thead>
+                                        @foreach($pendings AS $invoice)
                                         <tbody>
                                             <tr>
                                                 <th scope="row">
@@ -61,10 +62,10 @@
                                                 <td class="tinyBorder">{{$invoice['amount']}}</td>
                                             </tr>
                                         </tbody>
+                                        @endforeach
                                         <p>Click on the airway bill number to view breakdown of the individual charges and details</p>
                                     </table>
                             </form>
-                            @endforeach
                             @if(!empty($pendings))
                             <input type="button" id="btnClick" value="Pay Selected Invoices" />
                             @endif
@@ -72,7 +73,6 @@
                                 No Pending Invoices
                             @endif
                             <h4 id='yellow'><b>INVOICE HISTORY</b></h4>
-                            @foreach($invoices AS $invoice)
                                 <table class='tg1 mine'>
                                     <thead>
                                     <tr>
@@ -87,6 +87,7 @@
                                         <th class='mine'>Invoice Amount(TT$)</th>
                                     </tr>
                                     </thead>
+                                    @foreach($invoices AS $invoice)
                                     <tbody>
                                     <tr>
                                         <td class="tinyBorder">{{$invoice['billId']}}</td>
@@ -100,8 +101,8 @@
                                         <td class="tinyBorder">{{$invoice['amount']}}</td>
                                     </tr>
                                     </tbody>
+                                    @endforeach
                                 </table>
-                            @endforeach
                             @if(empty($invoices))
                                 <p> No invoices</p>
                             @endif
@@ -127,11 +128,13 @@
                 });
 
                 if (selected.length > 0) {
-                    // alert("Selected values: " + selected.join(","));
                     $.ajax({
                         type: "POST",
-                        url: '{{URL:: to('test')}}',
-                        data:selected,
+                        url: '{{URL:: to('invoice')}}',
+                        data: {
+                            '_token': $('meta[name="csrf-token"]').attr('content'),
+                            'selectedInvoices': selected
+                        },
                     }).done(function( selected ) {
                         alert( selected );
                     });
@@ -139,6 +142,7 @@
             });
         });
     </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript" src="js/vendor/jquery.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
