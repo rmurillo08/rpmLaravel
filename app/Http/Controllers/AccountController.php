@@ -8,15 +8,15 @@ class AccountController extends Controller
 {
    public function get()
    {
-       $user = auth()->user();
-       $account = $this->getAccountQuery($user->id);
-       $accountData = $this->formatAccount($account, $user->id);
+       $userId = auth()->user()->id;
+       $account = $this->getAccountQuery($userId);
+       $accountData = $this->formatAccount($account, $userId);
        return  view('account')->with($accountData);
    }
 
    private function getAccountQuery($userId)
    {
-       return  \DB::table('users AS u')
+       return  \DB::table('customer AS u')
            ->join('profiles AS p', 'p.user_id', '=', 'u.id')
            ->select('u.id', 'u.first_name', 'u.last_name', 'u.email', 'p.id_type', 'p.id_number', 'p.primary_telephone',
                'p.secondary_telephone', 'p.primary_address', 'p.secondary_address' , 'p.city', 'p.country', 'p.delivery', 'p.pick_up')
@@ -74,11 +74,14 @@ class AccountController extends Controller
    {
        $userId = auth()->user()->id;
        $data = $request->all();
-       $this->updateQuery($userId, $data);
+
+       if(!empty($data)) {
+           $this->updateQuery($userId, $data);
+       }
        return back();
    }
 
-   private function updateQuery($userId, $data)
+   private function updateQuery($userId, $data): void
    {
        \DB::table('profiles')
            ->where('user_id', $userId)

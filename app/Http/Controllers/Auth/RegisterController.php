@@ -11,8 +11,8 @@ use App\Users\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Sendinblue\Mailin;
 
 class RegisterController extends Controller
 {
@@ -46,31 +46,17 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-//    /**
-//     * Get a validator for an incoming registration request.
-//     *
-//     * @param  array  $data
-//     * @return \Illuminate\Contracts\Validation\Validator
-//     */
-//    protected function validator(array $data)
-//    {
-//        return Validator::make($data, [
-//            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-//            'delivery' => 'required_without_all: pickup',
-//            'pickup' => 'required_without_all: delivery'
-//        ]);
-//    }
-
     protected function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:customer'],
             'delivery' => 'required_unless: pick_up,',
             'pick_up' => 'required_unless: delivery,'
         ]);
         if($validator->fails()) {
             return redirect('signUp')->withErrors($validator)->withInput();
         }
+        $request['accountNumber'] = random_int(500, 9999999);
         $userId = $this->insertQuery($request);
         (new ProfileController())->create($request, $userId);
         (new AuthorizedUserController())->create($request, $userId);
@@ -95,13 +81,17 @@ class RegisterController extends Controller
 
     public function sendEmail($request)
     {
-        $name = $request['first_name'] . ' ' . $request['last_name'];
-
-        Mail::send('email', ['name' => ucwords($name)], function ($message) use ($request) {
-            $message->from(env('MAIL_USERNAME'), 'RPM Express Couriers');
-            $message->to($request['email']);
-            //$message->cc(env('MAIL_USERNAME'));
-            $message->subject('Welcome to RPM Family');
-        });
+        $email = $request['email'];
+        $mailin = new Mailin('https://api.sendinblue.com/v2.0', env('MAIL_PASSWORD'));
+        $data = array (
+            'id' => 2,
+            'to' =>  $email,
+            'attr' => array(
+                'FIRSTNAME' => $request['first_name'],
+                'LASTNAME' => $request['last_name'],
+                'ACCOUNTNUMBER' => $request['accountNumber']
+                ),
+        );
+    $mailin->send_transactional_template($data);
     }
 }
