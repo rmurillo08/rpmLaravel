@@ -48,14 +48,14 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:customer'],
+//            'email' => ['required', 'string', 'EmailAddress', 'max:255', 'unique:customer'],
             'delivery' => 'required_unless: pick_up,',
             'pick_up' => 'required_unless: delivery,'
         ]);
         if($validator->fails()) {
             return redirect('signUp')->withErrors($validator)->withInput();
         }
-        $request['accountNumber'] = random_int(500, 999999);
+        $request['accountNumber'] = $this->getAccountNumber();
         $this->insertQuery($request);
         (new ContactController())->create($request);
         $email = ['email'=>$request['email']];
@@ -67,12 +67,14 @@ class RegisterController extends Controller
     private function insertQuery($request) : void
     {
         $coordinates = (new Location())->getCoordinates($request);
+        $password = Hash::make($request['password']);
 
         $user = (new User());
         $user->FirstName =  $request['first_name'];
         $user->LastName =  $request['last_name'];
         $user->EmailAddress =  $request['email'];
-        $user->PasswordHash = Hash::make($request['password']);
+        $user->PasswordHash = $password;
+        $user->PasswordSalt = $password;
         $user->AccountNumber = $request['accountNumber'];
         $user->AddressLine1 = $request['primary_address'];
         $user->AddressLatitude = $coordinates['latitude'];
@@ -88,6 +90,7 @@ class RegisterController extends Controller
         $user->Heard = $request['heard'];
         $user->IsDelivery = !empty($request['delivery']) ? 1: 0;
         $user->IsPickUp = !empty($request['pick_up']) ? 1 : 0;
+        $user->timestamps = false;
         $user->save();
     }
 
@@ -105,5 +108,23 @@ class RegisterController extends Controller
                 ),
         );
     $mailin->send_transactional_template($data);
+    }
+
+    private function getAccountNumber()
+    {
+        $accoutNumber = random_int(500, 999999);
+        if(!empty($this->checkAccountNumberDuplicates($accoutNumber))) {
+            $this->getAccountNumber();
+        }
+        return $accoutNumber;
+    }
+
+    private function checkAccountNumberDuplicates($accountNumber)
+    {
+        $accounts = \DB::table('customer')
+            ->select('CustomerId')
+            ->where('AccountNumber', '=', $accountNumber)
+            ->first();
+        return $accounts->CustomerId ?? '';
     }
 }

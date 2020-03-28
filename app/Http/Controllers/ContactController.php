@@ -27,8 +27,9 @@ class ContactController
         foreach ($users as $user) {
             $authorizedUser = (new Contact());
             $authorizedUser->AccountNumber = $accountNumber;
-            $authorizedUser->FirstName = $user['firstName'];
-            $authorizedUser->LastName = $user['lastName'];
+            $authorizedUser->FirstName = $user['FirstName'];
+            $authorizedUser->LastName = $user['LastName'];
+            $authorizedUser->timestamps = false;
             $authorizedUser->save();
         }
     }
