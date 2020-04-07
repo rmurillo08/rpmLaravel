@@ -80,7 +80,7 @@ Route::get('registerConfirmation', function () {
 });
 Route::get('account', 'AccountController@get')->middleware('auth');
 Route::post('account', 'AccountController@update')->middleware('auth');
-Route::post('authUser/updated', 'AuthorizedUserController@update')->middleware('auth');
+Route::post('authUser', 'ContactController@update')->middleware('auth');
 Route::get('prealert', function () {
     return view('prealert');
 })->middleware('auth');

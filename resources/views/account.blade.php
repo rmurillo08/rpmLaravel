@@ -135,7 +135,7 @@
                                 </form>
                                 <p>Other Account Settings</p>
                                 <form class="myForm1" id='updateAuthUsers' method="post"
-                                      action="{{URL:: to('account')}}">
+                                      action="{{URL:: to('authUser')}}">
                                     {{csrf_field()}}
                                     <div class="sc_accordion sc_accordion_style_1" data-active="0" role="tablist">
                                         <div class="sc_accordion_item sc_active">
@@ -185,7 +185,7 @@
                                     <p/>
                                     <!-- basic modal -->
                                     <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog"
-                                         aria-labelledby="basicModal" aria-hidden="true">
+                                         aria-labelledby="basicModal2" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -304,24 +304,27 @@
 
 
 <script type="text/javascript">
-    // $(document).ready(function() {
+    $(document).ready(function () {
+
+    });
+    // $(document).ready(function () {
     //
-    //     var table = $('#authTable').DataTable();
+    //     const table = $('#authTable').DataTable();
     //
     //     table.on('click', '.edit', function () {
     //
     //         $tr = $(this).closest('tr');
-    //         if($($tr).hasClass('child')) {
+    //         if ($($tr).hasClass('child')) {
     //             $tr = $tr.prev('.parent');
     //
     //         }
     //         var data = table.row($tr).data();
-    //         console.log(data);
+    //         console.log('check data here :: ', data);
     //
-    //         $(#name).val(data[1]);
-    //         $(#phone).val(data[2]);
+    //         $('#name').val(data[1]);
+    //         $('#phone').val(data[2]);
     //
-    //         $(#editForm).attr('action', '/authUser/updated/' +data[0]);
+    //         $('#editForm').attr('action', '/authUser/updated/' + data[0]);
     //     })
     // });
 
@@ -335,19 +338,19 @@
     // $.extend(authUsers, {row_id:row_id});
 
 
-    var table = document.getElementById('authTable');
-
-    for (let i = 0; i < table.rows.length; i++) {
-        table.rows[i].oninput = function () {
-            // rIndex = this.rowIndex;
-            // console.log(rIndex);
-            data[i + 'Name'] = document.getElementById("name").value.cells[0].innerHTML;
-            data[i + 'phone'] = document.getElementById("telephone").value.cells[1].innerHTML;
-            data[i + 'id'] = document.getElementById("id").value.cells[2].innerHTML;
-        };
-        console.log('thi sis the data:: ', data);
-    }
-    $('#editButton').attr('action', '/authUser/updated/' + data);
+    // var table = document.getElementById('authTable');
+    //
+    // for (let i = 0; i < table.rows.length; i++) {
+    //     table.rows[i].oninput = function () {
+    //         // rIndex = this.rowIndex;
+    //         // console.log(rIndex);
+    //         data[i + 'Name'] = document.getElementById("name").value.cells[0].innerHTML;
+    //         data[i + 'phone'] = document.getElementById("telephone").value.cells[1].innerHTML;
+    //         data[i + 'id'] = document.getElementById("id").value.cells[2].innerHTML;
+    //     };
+    //     console.log('thi sis the data:: ', data);
+    // }
+    // $('#editButton').attr('action', '/authUser/updated/' + data);
 
 </script>
 </body>

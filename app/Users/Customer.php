@@ -2,13 +2,16 @@
 
 namespace App\Users;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+
+class Customer extends Authenticatable
 {
     use Notifiable;
 
+//    protected $guard = 'auth';
+//    protected $guarded = 'CustomerId';
     protected $table = 'customer';
 
     /**
@@ -43,7 +46,7 @@ class User extends Authenticatable
 //        'email_verified_at' => 'datetime',
 //    ];
 
-    public function getAuthPassword() : string
+    public function getAuthPassword()
     {
         return $this->PasswordSalt;
     }

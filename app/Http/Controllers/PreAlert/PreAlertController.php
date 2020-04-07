@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Prealert;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AuthorizedUserController;
+use App\Http\Controllers\ContactController;
+use App\Users\Customer;
 use App\Users\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,7 @@ class PreAlertController extends Controller
 //        }
 //        $userId = $this->insertQuery($request);
 //        (new ProfileController())->create($request, $userId);
-//        (new AuthorizedUserController())->create($request, $userId);
+//        (new ContactController())->create($request, $userId);
 //        $email = ['email'=>$request['email']];
 //        $this->sendEmail($request);
 info('here must be here:: ');
@@ -34,7 +35,7 @@ info('here must be here:: ');
 
     private function insertQuery($request)
     {
-        $user = (new User());
+        $user = (new Customer());
         $user->first_name =  $request['first_name'];
         $user->last_name =  $request['last_name'];
         $user->email =  $request['email'];

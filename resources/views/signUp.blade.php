@@ -299,7 +299,7 @@
 										<input id='completeWidth' type="text" name="first_name" placeholder='First Name' required>
 									</p>
 									<p>
-										<input id='completeWidth' type="email" name="email"  placeholder='Email Address' required>
+										<input id='completeWidth' type="email" name="EmailAddress"  placeholder='Email Address' required>
 									</p>
 									<p>
 										<input id='completeWidth' type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" placeholder='Password' required>

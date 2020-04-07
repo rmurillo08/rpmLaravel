@@ -23,10 +23,10 @@
                                         <form action="{{URL:: to('log')}}" method="post" name="login_form" class="popup_form login_form">
                                             {{csrf_field()}}
                                             <div class="icon popup_form_field login_field iconed_field icon-mail">
-                                                <input type="text" id="log" name="log" value="" placeholder="Email">
+                                                <input type="text" id="log" name="EmailAddress" value="" placeholder="Email">
                                             </div>
                                             <div class="icon popup_form_field password_field iconed_field icon-lock-2">
-                                                <input type="password" id="password" name="pwd" value="" placeholder="Password">
+                                                <input type="password" id="password" name="PasswordSalt" value="" placeholder="Password">
                                             </div>
                                             <div class="popup_form_field remember_field">
                                                 <a href="#" class="forgot_password">Forgot password?</a>

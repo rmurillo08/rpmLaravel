@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Invoices;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class InvoiceController extends Controller
 {
@@ -54,6 +56,42 @@ class InvoiceController extends Controller
             }
         }
         return $pending ?? [];
+    }
+
+    public function insertUpdateTempTable(Request $request)
+    {
+        $userId = auth()->user()->id;
+        $invoiceNumbers = implode(',', $request['selectedInvoices']);
+
+        if(!$this->checkDuplets($userId)) {
+            $this->insertTempTable($invoiceNumbers, $userId);
+        } else {
+            $this->updateTemTable($invoiceNumbers, $userId);
+        }
+        return  view('invoice');
+    }
+
+    private function checkDuplets($userId)
+    {
+        $invoices = \DB::table('')
+            ->select('id')
+            ->where('user_id', '=', $userId)
+            ->first();
+        return $invoices->id ?? '';
+    }
+
+    public function updateTemTable($invoices, $userId)
+    {
+        \DB::table('invoices_temp')
+            ->update(['invoices' => $invoices, 'updated_at' => Carbon::now()])
+            ->where('user_id', '=', $userId);
+    }
+
+    public function insertTempTable($invoices, $userId)
+    {
+        \DB::table('invoices_temp')
+            ->update(['invoices' => $invoices, 'updated_at' => Carbon::now()])
+            ->where('user_id', '=', $userId);
     }
 }
 

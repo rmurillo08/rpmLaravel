@@ -57,7 +57,7 @@
 										Check to see our range of delivery in your area
 									</h3>
 									<p align="justify">
-										For questions regarding our delivery range please contact us atcustomerservice@rpmexpresscouriers.com. As we would like to deliver
+										For questions regarding our delivery range please contact us at customerservice@rpmexpresscouriers.com. As we would like to deliver
 										to all areas in Trinidad, due to the potential risks, we are unable to commit to this promise; However, we are
 										committed to outstanding customer service and we will do everything we can to deliver your packages as long as we can
 										promise to keep our staff and your packages safe on the road.

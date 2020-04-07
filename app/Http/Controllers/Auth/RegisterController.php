@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Geocoder\Location;
 use App\Http\Controllers\ContactController;
 use App\Providers\RouteServiceProvider;
-use App\Users\User;
+use App\Users\Customer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +48,7 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-//            'email' => ['required', 'string', 'EmailAddress', 'max:255', 'unique:customer'],
+            'EmailAddress' => ['required', 'string', 'email', 'max:255', 'unique:customer,EmailAddress'],
             'delivery' => 'required_unless: pick_up,',
             'pick_up' => 'required_unless: delivery,'
         ]);
@@ -69,10 +69,10 @@ class RegisterController extends Controller
         $coordinates = (new Location())->getCoordinates($request);
         $password = Hash::make($request['password']);
 
-        $user = (new User());
+        $user = (new Customer());
         $user->FirstName =  $request['first_name'];
         $user->LastName =  $request['last_name'];
-        $user->EmailAddress =  $request['email'];
+        $user->EmailAddress =  $request['EmailAddress'];
         $user->PasswordHash = $password;
         $user->PasswordSalt = $password;
         $user->AccountNumber = $request['accountNumber'];
